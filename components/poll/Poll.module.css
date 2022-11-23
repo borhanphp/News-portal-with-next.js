@@ -1,0 +1,87 @@
+.poll {
+    font-size: 0.9rem;
+  }
+  .poll ul {
+    padding: 0;
+    width: 300px;
+    margin: auto;
+  }
+  .poll ul li {
+    list-style: none;
+    border: 2px solid #00ddf9;
+    border-radius: 3px;
+    line-height: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .poll ul li button {
+    border: none;
+    background: transparent;
+    outline: none;  
+    height: 100%;
+    width: 100%;
+    display: block;
+    padding: 15px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .poll ul li span {
+    display: none;
+  }
+  .poll ul.results li button span {
+    display: inline-block;
+    margin-left: 8px;
+  }
+  .poll ul.results li {
+    border-color: #999;
+  }
+
+
+  .inputchange {
+    pointer-events: none;
+    margin-left: 11px;
+    margin-top: 5px;
+    opacity: 0px;
+  }
+  .inputradio {
+    margin-left: 11px;
+    margin-top: 5px;
+  }
+  .pollcolor input {
+    margin-left: 11px;
+    margin-top: 5px;
+  }
+
+  .submittedstyle {
+    color: #5ec3ec;
+    border: 1px solid #5ec3ec!important;
+    cursor: not-allowed;
+  }
+  .color {
+    background: #f9f9f9;
+    position: absolute;
+    height: 27px;
+    z-index: -3;
+    right: 0;
+    border-radius: 0 5px 5px 0;
+  }
+  .pollcolor{
+    position: relative;
+    width: 100%;
+    z-index: 9999999;
+    height: 29px;
+    background-color: #cddeec;
+  }
+  .countlbl {
+    position: absolute;
+    right: 9px;
+    font-size: 13.5px;
+    top: 3px;
+}
+.lbl{
+  font-size: 13.5px;
+  vertical-align: text-bottom;
+}

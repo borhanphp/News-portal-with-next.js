@@ -1,0 +1,247 @@
+.ul {
+	list-style-type: none;
+    margin: 3px 0;
+    padding: 0;
+    overflow: hidden;
+    float: left;
+    font-size: 19px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 24px;
+}
+.uleng {
+    font-size: 16px;
+}
+.bx{
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.ulright{
+  margin-bottom: 0;
+  font-size: 19px;
+  font-weight: bold;
+  float: right;
+  padding-left: 0;
+}
+.text-flip::before {
+  content: "Classified";
+  animation: textFlip infinite 5s;
+}
+
+  .li > a {
+    display: block;
+    color: inherit;
+    text-align: center;
+    padding: 2px 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border-right:1px solid #bbb;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .li:last-child > a {
+    border-right:0;
+  }
+  .li:first-child > a {
+    border-right:0;
+  }
+  .li:nth-child(2) > a {
+    border-right:0;
+  }
+  /* classified */
+  .liclas:first-child > a {
+    border-right:1px solid #bbb!important;
+  }
+  .liclas:nth-child(2) > a {
+    border-right:1px solid #bbb!important;
+  }
+  
+  
+  .button {
+    background-color: #9e061f;
+    border: 1px solid #a5004c;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 5px 0px 5px 8px;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Montserrat', 'banglaBold';
+    font-weight: bold;
+    height: 37px;
+    padding: 4px 20px;
+  }
+
+.btn-primary {
+  border-color: #5a8dee !important;
+  background-color: #5a8dee !important;
+  color: #fff;
+}
+.shadowMd {
+  box-shadow: 0px 5px 10px rgba(90, 116, 148, 0.3);
+}
+.navbar{
+border-radius: 5px;
+}
+.sidebar{
+  position: relative;
+  width: 280px;
+  min-height: 100vh;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  z-index: 1;
+
+  transition: 0.5s;
+}
+.sidebar.active{
+  left: 0;
+}
+.sdHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+.sidebarOverlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+.sidebarOverlay.active{
+  opacity: 1;
+  visibility: visible;
+}
+.sdBody{
+  padding: 0px;
+  max-height: calc(100vh - 67px);
+  overflow-x: hidden;
+}
+.sdBody ul{
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0;
+}
+.sdBody ul li{
+  list-style: none;
+  margin-bottom: 0px;
+}
+.sdBody ul li .sdLink{ 
+  display: inline-block;
+  width: 100%;
+  padding: 9px 9px;
+  padding-left: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  border-top: 1px solid rgb(214, 209, 209);
+  cursor: pointer;
+  text-decoration: none;
+  
+}
+
+.sdLink:hover{
+  background-color: #f5f5f5;
+}
+
+.shathe {
+  color:rgb(21, 197, 153);
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.crossSign {
+  position: absolute;
+  right: 0;
+  padding: 5px;
+  
+}
+
+.classifiedTab{
+  display: inline-block;
+  width: 100%;
+  padding: 7px 7px;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  border-top: 1px solid rgb(214, 209, 209);
+  border-bottom: 1px solid rgb(214, 209, 209);
+  cursor: pointer;
+  text-decoration: none;
+
+}
+.classifiedButton {
+  cursor: pointer;
+  font-family: 'Montserrat', 'banglaBold';
+  border: none;
+  outline: none;
+  font-weight: bold;
+  min-width: 135px;
+  height: 37px;
+  padding: 4px 20px;
+  background: #2980B9;
+  color: white;
+  font-size: 19px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+}
+.classifiedButton:hover {
+  background: white;
+  border: 1px solid #2980B9;
+  color: #2980B9;
+}
+
+
+/* dashboard sidebar design for toggle */
+/* this style implemented on <Header/> component */
+.sidebar2{
+  position: relative;
+  width: 210px;
+  min-height: 100vh;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  z-index: 1;
+
+  transition: 0.5s;
+}
+.sidebar2.active{
+  left: 0;
+}
+
+
+
+/* On screens that are 600px wide or less, make the menu links stack on top of each other instead of next to each other */
+@media screen and (max-width: 1000px) {
+  .hidevar {
+    display: none;
+  }
+}
+
+.showmbvar {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .showmbvar {
+    display: block;
+  }
+}

@@ -1,0 +1,405 @@
+
+
+@media (max-width: 800px) {
+    .flexContainer {
+      flex-direction: column;
+    }
+    
+
+    .flexItem {
+        align-items: flex-start;
+        order: 2;
+        margin-right: 0 !important;
+        margin-top: 10px;
+
+    }
+
+    .flexItem2 {
+        order: 1;
+    }
+
+    .flexContainer > .flexItem2 > img {
+        width: 100%;
+        height: 230px;
+    }
+
+    .flexItem3 {
+        order: 3;
+        align-items: flex-end;
+        margin-top: 10px;
+        margin-left: 0 !important;
+    }
+    
+
+    .galleryContainer{
+        display: flex;
+        border: 2px solid black;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .galleryContainer > .galleryItem {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .galleryContainer > .videoItem {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    
+    }
+
+
+ 
+
+
+  }
+
+
+
+
+
+
+
+
+
+.flexContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    font-family: Montserrat, 'Shurjo';
+  }
+
+
+
+.flexContainer > div {
+background-color: #f1f1f1;
+}
+
+
+/* left side div of fearured section */
+
+.flexItem {
+    flex: 4;
+    margin-right: 10px;
+}
+
+.flexItem > img {
+    width: 100%;
+    height: 50%;
+}
+
+.flexItem > h2 {
+    margin: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.flexItem > p {
+    margin: 10px;
+}
+
+
+/* middle side div of fearured section */
+
+.flexItem2 {
+    flex: 6;
+    height: 450px;
+}
+
+.flexItem2 > img {
+    width: 100%;
+    height: 65%;
+}
+
+.flexItem2 > h2 {
+    margin: 10px;
+    font-size: 30px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.flexItem2 > p {
+    margin: 10px;
+}
+
+
+/* right side div of fearured section */
+
+.flexItem3 {
+    flex: 4;
+    margin-left: 10px;
+}
+
+.flexItem3 > img {
+    width: 100%;
+    height: 50%;
+}
+
+.flexItem3 > h2 {
+    margin: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.flexItem3 > p {
+    margin: 10px;
+}
+
+
+
+/* *************************************************
+gallery and video section
+**************************************************** */
+.galleryContainer {
+    display: flex;
+    border: 2px solid black;
+}
+
+.galleryItem {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    margin-right: 10px;
+    flex-direction: column;
+
+}
+
+.videoItem {
+    position: relative;
+    width: 30%;
+    height: 100%;
+    padding: 10px;
+
+}
+
+.videoItem >.col {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.picItem {
+    width: 35%;
+    height: 100px;
+    cursor: pointer;
+}
+
+.picItem > .mainImg {
+    /* position: relative; */
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.picItem > .playImg {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    display: block;
+    margin-top: -90px;
+    margin-left: 10px;
+    animation: demo_play_btn 3s ease-in-out;
+    border-radius: 50%;
+    transition: all 0.5s ease-in-out;
+    
+}
+
+
+.videoItem:hover .playImg {
+    display: block;
+    margin-top: -65px;
+    margin-left: 45px;
+}
+
+.headingItem {
+    width: 65%;
+    height: 50px;
+}
+
+.headingItem > h2 {
+    margin: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+
+
+
+/* 
+entertainement section
+*/
+
+.releted_title{
+    position: absolute;
+      bottom: 0;
+      padding: 3px 11px;
+      color: #FFF;
+      text-align: left;
+      z-index: 1;
+      font-weight: bold;
+      cursor: pointer;
+  }
+  
+  .releted_card{
+    position: relative;
+    text-align:center;
+    width: 25%;
+    height: 430px;
+    margin-top: 10px;
+  }
+
+  
+  
+  .releted_card:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 0%, black 90%);
+      border-radius: 0.25rem!important;
+      cursor: pointer;
+  }
+
+
+  .cardButton {
+    position: absolute;
+    background: orangered;
+    left: 30%;
+    right: 30%;
+    text-align: center;
+    padding: 2px;
+    top: 0px;
+    border-bottom: 2px solid #00000052;
+    border-radius: 2px;
+    z-index: 100;
+    
+  }
+
+  .cardButtonText{
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+
+  /* #app { height: 100% }
+  html,
+  body {
+    position: relative;
+    height: 100%;
+  }
+  
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  } */
+  
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiperSlide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  
+  .swiperSlide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* body {
+    background: #000;
+    color: #000;
+  } */
+  
+  .swiper {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .swiperSlide {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    
+  }
+  
+  .swiperSlide > h2 {
+    position: absolute;
+    bottom: 5px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+  }
+  .mySwiper2 {
+    height: 450px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .mySwiper {
+    height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+  }
+  
+  .mySwiper .swiperSlide {
+    width: 25%;
+    height: 100%;
+  }
+  
+  .mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
+  }
+  
+  .swiperSlide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+
+
+
+

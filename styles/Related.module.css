@@ -1,0 +1,25 @@
+.releted_title{
+  position: absolute;
+    bottom: 0;
+    padding: 3px 11px;
+    color: #FFF;
+    text-align: left;
+    z-index: 1;
+    font-weight: bold;
+}
+
+.releted_card{
+  position: relative;
+  text-align:center;
+}
+
+.releted_card:before {
+	content: '';
+	position: absolute;
+	top: 56%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to bottom, transparent 0%, black 80%);
+	border-radius: 0.25rem!important;
+}
