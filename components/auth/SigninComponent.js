@@ -31,8 +31,8 @@ const SigninComponent = () => {
 
 
     signin(user).then(data => {
-      if(error){
-        setValues({...values, error: error, loading: false });
+      if(data.error){
+        setValues({...values, error: data.error, loading: false });
       } else {
         //token save
         //
@@ -54,7 +54,7 @@ const SigninComponent = () => {
   };
 
   // const showLoading = () => (loading ? <div  className="alert alert-info">Loading...</div> : '');
-  // const showError = () => (error ? <div  className="alert alert-danger">{error}</div> : '');
+  const showError = () => (error ? <div  className="alert alert-danger">{error}</div> : '');
   // const showMessage = () => (message ? <div  className="alert alert-info">{message}</div> : '');
 
 
@@ -93,6 +93,7 @@ const SigninComponent = () => {
           <h1 className="h3">Account Login</h1>
           <p>Sign In to your account</p>
         </div>
+        {showError()}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
@@ -151,7 +152,7 @@ const SigninComponent = () => {
 
   return (
   <>
-  {/* {showError()} */}
+ 
   {/* {showLoading()}
   {showMessage()} */}
   {loginForm()}
