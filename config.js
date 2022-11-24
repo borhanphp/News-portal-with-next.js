@@ -1,9 +1,9 @@
 import getConfig from 'next/config'
 const {publicRuntimeConfig} = getConfig()
 
-export const API = 'http://api-mliu.onrender.com/api';
+export const API = 'https://api-mliu.onrender.com/api';
 export const DOMAIN_IP = 'http://bdtech.live';
-export const IMG_API = 'http://82.180.161.124/api/images';
+export const IMG_API = 'http://api-mliu.onrender.com/api/images';
 export const APP_NAME = publicRuntimeConfig.APP_NAME;
 export const DOMAIN = "chalamannewyork.com";
 
