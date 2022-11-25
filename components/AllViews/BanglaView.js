@@ -102,7 +102,7 @@ const BanglaView = ({ router }) => {
           </div>
             
           <div className={styles.flexItem2}>
-            <img src={`${IMG_API}/${last[0]?.photo}`} className='w-100'/>
+            <img src={`${API}/blog/photo/${last[0]?.slug}`} className='w-100'/>
             <Link href={`/${last[0]?.slug}`}> 
               <h2>{last[0]?.title}</h2>
             </Link>
