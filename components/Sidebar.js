@@ -19,7 +19,7 @@ const Sidebar = () => {
 
   return (    
     <>
-   <div className="" style={{position: "relative", top: "27px", height: "100vh", width: '200px'}}>
+   <div className="" style={{position: "relative", top: "27px", height: "100vh", width: '270px'}}>
       <ProSidebar>
       <SidebarContent>
         <Menu>
