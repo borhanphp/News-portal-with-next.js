@@ -19,7 +19,7 @@ const Sidebar = () => {
 
   return (    
     <>
-   <div className="" style={{position: "relative", top: "27px", height: "100vh"}}>
+   <div className="" style={{position: "relative", top: "27px", height: "100vh", width: '20px'}}>
       <ProSidebar>
       <SidebarContent>
         <Menu>
@@ -89,21 +89,21 @@ const Sidebar = () => {
          
          
          {/* English version menu */}
-          <SubMenu icon={<GrGallery />} title="English Version">
+          {/* <SubMenu icon={<GrGallery />} title="English Version">
             <SubMenu title="Posts">
               <MenuItem><Link href="/admin/crud/eblog/ecreate">Add Post </Link></MenuItem>
               <MenuItem><Link href="/admin/crud/eblog/eblogs">All Posts</Link></MenuItem>
             </SubMenu>
             <MenuItem><Link href="/admin/crud/eblog/ecategory">Category</Link></MenuItem>
             <MenuItem><Link href="/admin/crud/eblog/esubcategory">Subcategory</Link></MenuItem>
-            {/* <MenuItem><Link href="/admin/crud/eblog/etags">Tags</Link></MenuItem> */}
-            {/* <SubMenu title="Pages">
+            <MenuItem><Link href="/admin/crud/eblog/etags">Tags</Link></MenuItem> 
+             <SubMenu title="Pages">
               <MenuItem><Link href="/admin/page/about">About</Link></MenuItem>
               <MenuItem><Link href="/admin/page/contact">Contact</Link></MenuItem>
               <MenuItem><Link href="/admin/page/editor">Editor</Link></MenuItem>
               <MenuItem><Link href="/admin/page/advertisement">Advertisement</Link></MenuItem>
-            </SubMenu> */}
-          </SubMenu>
+            </SubMenu>
+          </SubMenu> */}
             {isAuth() && isAuth().role === 4 ? '' :
           <MenuItem icon={<FiUsers />}><Link href="/admin/users">Users</Link></MenuItem>
           }
