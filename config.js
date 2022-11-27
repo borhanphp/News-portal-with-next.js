@@ -5,7 +5,6 @@ const {publicRuntimeConfig} = getConfig()
 export const API = 'https://api-mliu.onrender.com/api';
 export const DOMAIN_IP = 'http://bdtech.live';
 export const IMG_API = 'http://api-mliu.onrender.com/api/images';
->>>>>>> 37338f65264c04f74621e614d6abbf595380539a
 export const APP_NAME = publicRuntimeConfig.APP_NAME;
 export const DOMAIN = "bdtech.live";
 
