@@ -25,8 +25,9 @@ const Layout2 = ({children}) => {
       <div className='container-fluid'>
         {/* <Allnav/>  */}
         <Topnav/>
-        <Navbar searchForNav = {searchFunc} onCross={crossClick}/>
         <Scrollbar/>
+        <Navbar searchForNav = {searchFunc} onCross={crossClick}/>
+       
         {children}
       </div>
       <Footer/>

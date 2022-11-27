@@ -16,14 +16,14 @@ const Scrollbar = () => {
   return (
     <div className='container px-0'>
        <div className={"scrolling-wrapper "+styles.bigscroll}>
-            <div className="scroll-title">
+            {/* <div className="scroll-title">
                 <span className="intro-banner-vdo-play-btn pinkBg">
 					<span className="ripple pinkBg"></span>
 					<span className="ripple pinkBg"></span>
 					<span className="ripple pinkBg"></span>
                 </span>
                 <h2>Headline</h2>
-            </div>
+            </div> */}
             <div className="scrolling bg-white">
                 <Marquee pauseOnHover={true} gradient={false} speed={40} className="bg-white fw-bold pt-1"> 
                     {lastNews && lastNews.slice(0, 5).map((last, index) =>
