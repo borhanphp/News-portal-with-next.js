@@ -117,27 +117,7 @@ class MyApp extends App {
 				  </div>
 				</>
 			)
-        } else if(router.pathname.startsWith('/classified')){
-			return (
-				<>
-					<div className='container-fluid'>
-						<div className="row">
-							<div>
-								<div className='hideinmobile'>
-									<Topnav/>
-									<Logosec/>
-									<Cnav/>
-								</div>
-								<div className='hideindesktop'> <ClassifiedBanglaNav/></div>
-								<Layout>
-									<Component {...pageProps}></Component>
-								</Layout>
-							</div>
-						</div>
-					</div>
-					<Footer/>
-				</>
-			)
+      
 		} else {
 			return (
 				<>

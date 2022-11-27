@@ -3,6 +3,8 @@ import Allnav from './Allnav';
 import Footer from './Footer';
 import Navbar from './frontend/Navbar';
 import { SearchContext } from '../service/SearchContext';
+import Scrollbar from './frontend/Scrollbar';
+import Topnav from './frontend/Topnav';
 
 const Layout2 = ({children}) => {
 
@@ -21,8 +23,10 @@ const Layout2 = ({children}) => {
     <>
      <SearchContext.Provider value={hideview}>
       <div className='container-fluid'>
-        <Allnav/> 
+        {/* <Allnav/>  */}
+        <Topnav/>
         <Navbar searchForNav = {searchFunc} onCross={crossClick}/>
+        <Scrollbar/>
         {children}
       </div>
       <Footer/>

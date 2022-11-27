@@ -13,16 +13,11 @@ const Wrapper = styled.div`
 `
 
 const Allnav = () => {
-  // const [view, setView] = useState("not clicked");
-  // const allnavChange = () => {
-  //   setView("clicked");
-  // }
   return (
          <div className='row'>
            <div className='col-12 px-0'>
             <div className={styles.main_menu_show}>
               <Topnav/>
-              <Logosec/>
               <Scrollbar/>
             </div>
           </div>
