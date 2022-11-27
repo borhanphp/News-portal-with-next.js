@@ -173,7 +173,7 @@ const clearA = () => {
 								</li>
 							)}
                         </ul>
-                        <ul className={styles.ulright}>
+                        <ul className={`mt-2 ${styles.ulright}`}>
                             <a style={{cursor: "pointer"}} onClick={ () => setShow(!show) }><BsSearch size="25px"/></a>
                         </ul>
                         {show ? <Search showSearch={showSearch} passRes={passRes} clearA={clearA}/> : ''}

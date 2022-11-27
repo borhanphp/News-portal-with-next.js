@@ -22,9 +22,9 @@ const Scrollbar = () => {
 					<span className="ripple pinkBg"></span>
 					<span className="ripple pinkBg"></span>
                 </span>
-                <h2>শিরোনাম</h2>
+                <h2>Headline</h2>
             </div>
-            <div className="scrolling">
+            <div className="scrolling bg-white">
                 <Marquee pauseOnHover={true} gradient={false} speed={40} className="bg-white fw-bold pt-1"> 
                     {lastNews && lastNews.slice(0, 5).map((last, index) =>
                         <Link href={`/blogs/${last?.slug}`} key={index}>

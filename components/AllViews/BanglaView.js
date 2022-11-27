@@ -56,16 +56,16 @@ const BanglaView = ({ router }) => {
 
     const head = () => (
         <Head>
-            <title>চলমান নিউইয়র্ক | {APP_NAME}</title>
+            <title>{APP_NAME}</title>
             <meta
                 name="description"
-                content="Chalaman NewYork most popular newspaper & web media among Bangladeshi people. only one of the heights circulated Bangla newspaper in New York City"
+                content="BD Tech is a technology news website build with next js and mern stack technology"
             />
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:title" content={`Latest newyork news for | ${APP_NAME}`} />
+            <meta property="og:title" content={`Latest Technology News For | ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content="Chalaman NewYork most popular newspaper & web media among Bangladeshi people. only one of the heights circulated Bangla newspaper in New York City"
+                content="BD Tech is a technology news website build with next js and mern stack technology"
             />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
