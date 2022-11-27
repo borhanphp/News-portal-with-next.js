@@ -130,7 +130,11 @@ const clearA = () => {
                     
                 </ul>
             </div>
-            
+            <p className={styles.classifiedTab}>
+                <Link href="/classified">
+                    Classified / বিজ্ঞাপন
+                </Link>  
+            </p>
             <div>
                 <h5 className={styles.shathe}>আমাদের সাথে থাকুন </h5>
                 <FacebookShareButton children={<FacebookIcon size={32} round={true} />} url={``}/>&nbsp;&nbsp;&nbsp;
@@ -174,7 +178,23 @@ const clearA = () => {
 							)}
                         </ul>
                         <ul className={styles.ulright}>
+            
                             <a style={{cursor: "pointer"}} onClick={ () => setShow(!show) }><BsSearch size="25px"/></a>
+                            <Link href="/classified">
+                            <button className={styles.button}
+                                style={{
+                                    backgroundColor: '#2980B9',
+                                    border:'1px solid #2980B9'
+                                }}
+                            >
+                                    Classified
+                                </button>
+                                </Link>
+                            <Link href="/en">
+                            <button className={styles.button}>
+                                    English Version
+                                </button>
+                                </Link>
                         </ul>
                         {show ? <Search showSearch={showSearch} passRes={passRes} clearA={clearA}/> : ''}
     

@@ -18,7 +18,14 @@ import Sidebar from '../components/Sidebar'
 import { Provider } from 'react-redux'
 import { store } from '../store'
 import Cnav from '../components/classified/Cnav'
+import CnavEng from '../components/classified/CnavEng'
+import TopnavEng from '../components/english-view/TopnavEng'
+import LogosecEng from '../components/english-view/LogosecEng'
+import AllnavEng from '../components/english-view/AllnavEng'
+import FooterEng from '../components/english-view/FooterEng'
+import LayoutEng from '../components/LayoutEng'
 import ClassifiedBanglaNav from '../components/frontend/mobile/ClassifiedBanglaNav'
+import ClassifiedEnglishNav from '../components/frontend/mobile/ClassifiedEnglishNav'
 // import '../assets/css/nifty.min.css'
 // import '../assets/css/bootstrap.min.css'
 // import '../assets/css/demo/nifty-demo-icons.min.css'
@@ -136,6 +143,38 @@ class MyApp extends App {
 						</div>
 					</div>
 					<Footer/>
+				</>
+			)
+		}else if(router.pathname.startsWith('/engclassified')){
+			return (
+				<>
+					<div className='container-fluid'>
+						<div className="row">
+							<div>
+								<div className='hideinmobile'>
+									<TopnavEng/>
+									<LogosecEng/>
+									<CnavEng/>
+								</div>
+								<div className='hideindesktop'> <ClassifiedEnglishNav/> </div>
+								<Layout>
+									<Component {...pageProps}></Component>
+								</Layout>
+							</div>
+						</div>
+					</div>
+					<FooterEng/>
+				</>
+			)
+		}else if(router.pathname.startsWith('/en')){
+			return (
+				<>
+					<div className='container-fluid'>
+						<LayoutEng>
+							<Component {...pageProps}></Component>
+						</LayoutEng>
+					</div>
+					<FooterEng/>
 				</>
 			)
 		} else {

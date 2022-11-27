@@ -47,7 +47,7 @@ const Scrollbar = () => {
                 </div>
 
                 <div className="col-9 col-sm-10 col-md-11 bg-danger">
-                    <marquee className="bg-white fw-bold pt-0">
+                    <marquee className="text-white fw-bold pt-0">
                         {lastNews && lastNews.slice(0, 5).map((last, i) =>
                             <Link href={`/blogs/${last?.slug}`} key={i}>
                                 <span style={{cursor: "pointer"}} ><SquareIcon fontSize='small'/>&nbsp;{last?.title}&nbsp;&nbsp;&nbsp;&nbsp;</span>

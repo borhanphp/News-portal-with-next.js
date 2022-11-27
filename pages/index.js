@@ -9,16 +9,16 @@ import { SearchContext } from '../service/SearchContext';
 const Index = ({ router }) => {
   const head = () => (
     <Head>
-        <title>NewYork News | {APP_NAME}</title>
+        <title>{APP_NAME}</title>
         <meta
             name="description"
-            content="Daily newyork news news"
+            content="Daily technology news"
         />
         <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
         <meta property="og:title" content={`Latest newyork news for | ${APP_NAME}`} />
         <meta
             property="og:description"
-            content="Newyork News"
+            content="Technology News"
         />
         <meta property="og:type" content="webiste" />
         <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />

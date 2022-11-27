@@ -107,6 +107,11 @@ const hideBar = () => {
 					)}
 				</ul>
 			</div>
+			<p className={styles.classifiedTab}>
+				<Link href="/classified">
+					Classified / বিজ্ঞাপন
+				</Link>  
+			</p>
 			<div>
 				<h5 className={styles.shathe}>আমাদের সাথে থাকুন </h5>
 				<FacebookShareButton children={<FacebookIcon size={32} round={true} />} url={``}/>&nbsp;&nbsp;&nbsp;
@@ -143,7 +148,9 @@ const hideBar = () => {
 
           <div className='col-4'>
             <SearchIcon className="float-end" onClick={ () => setShow(!show) } style={{marginTop: "10%", height: "40px", width: "50%", marginLeft: "3px", cursor: "pointer"}}/>
-            
+            <Link href="/en">
+              <button className='float-end btn btn-primary' style={{marginTop: "10%", backgroundColor: "#2980B9"}}>en</button>
+            </Link>
           </div>
         </div>
       </div>

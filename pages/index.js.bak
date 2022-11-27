@@ -1,17 +1,12 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Head from 'next/head';
-import styled from 'styled-components';
 import { withRouter } from 'next/router';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-import BanglaView from '../../components/AllViews/BanglaView';
-import EnglishView from '../../components/AllViews/EnglishView';
-import Loading from '../../components/Loading';
-import { useSelector } from 'react-redux';
-import { SearchContext } from '../../service/SearchContext';
-
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
+import BanglaView from '../components/AllViews/BanglaView';
+import Loading from '../components/Loading';
+import { SearchContext } from '../service/SearchContext';
 
 const Index = ({ router }) => {
-  
   const head = () => (
     <Head>
         <title>NewYork News | {APP_NAME}</title>
@@ -37,24 +32,15 @@ const Index = ({ router }) => {
   );
 
 
+const hideview = useContext(SearchContext);
 
-  const hideview = useContext(SearchContext);
-
-
-
-const englishVersion = () => {
+const banglaVersion = () => {
   return (
     <>
-    {hideview === true ? '' : 
-    <EnglishView
-    {...{ router }}
-    />
-  }
-    
+     { hideview === true ? "" : <BanglaView {...{ router }} /> }
     </>
   );
-};
-
+}
 
 const [loading, setLoading] = useState(true);
 useEffect(() => {
@@ -64,18 +50,18 @@ useEffect(() => {
 } , []);
 
 
+
+
   return ( 
     <>
-   {head()}
-    { loading ? <Loading/> : englishVersion() }
+    {head()}
+    
+    { loading ? <Loading/> : banglaVersion() }
    
     </>
     
   )
 };
-
-
-
 
   
 export default withRouter(Index);
