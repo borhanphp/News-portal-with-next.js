@@ -23,14 +23,15 @@ const Logosec = () => {
 
   return (
         <div className='container px-0'>
-            <div className='middle-header-wrapper flex'>
-                <Link href="/">
-                    <img src={data} style={{width: "176px", cursor: "pointer", height: "auto"}}/>
-                </Link>
-                <Link href="/">
-                    <TopRightAds/>
-                </Link>
-            </div> 
+            <div className='row'>
+                <div className='col-12'>
+                    <div className='middle-header-wrapper flex d-flex justify-content-center'>
+                        <Link href="/">
+                            <img src={data} className='text-center' style={{width: "176px", cursor: "pointer", height: "auto"}}/>
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </div>
   );
 };

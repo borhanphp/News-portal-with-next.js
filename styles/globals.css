@@ -73,8 +73,8 @@ a {
 	height:auto;
 }
 .is-sticky ul {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 .logobox {
     visibility: hidden;
@@ -110,7 +110,7 @@ a {
 .search_form{
   position: absolute;
     z-index: 9999;
-    top: 2px;
+    top: 0px;
     width: 100%;
 }
 .search_form div{
@@ -127,7 +127,6 @@ a {
   grid-gap: 30px;
   background: white;
   align-items: center;
-  height: 125px;
 }
 
 .middle-header-banner {
