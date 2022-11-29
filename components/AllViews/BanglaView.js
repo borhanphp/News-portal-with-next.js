@@ -94,7 +94,7 @@ const BanglaView = ({ router }) => {
       <div className='container px-0'>
         <div className={styles.flexContainer}>
           <div className={styles.flexItem}>
-            <img src={`${IMG_API}/${last[1]?.photo}`} className='w-100'/>
+            <img src={`${API}/blog/photo/${last[1]?.slug}`} className='w-100'/>
             <Link href={`/${last[1]?.slug}`}> 
               <h2>{last[1]?.title}</h2>
             </Link>
@@ -109,7 +109,7 @@ const BanglaView = ({ router }) => {
             <p>{last[0]?.excerpt.substring(0, 200).replace(/(<([^>]+)>)/ig, '')}...</p>
           </div>
           <div className={styles.flexItem3}>
-            <img src={`${IMG_API}/${last[2]?.photo}`} className='w-100'/>
+            <img src={`${API}/blog/photo/${last[2]?.slug}`} className='w-100'/>
             <Link href={`/${last[2]?.slug}`}> 
               <h2>{last[2]?.title}</h2>
             </Link>
@@ -123,7 +123,7 @@ const BanglaView = ({ router }) => {
       
     <div className='row'>
         <div className="col-12">
-          <img src={`${IMG_API}/${last[0]?.photo}`} className='w-100'/>
+          <img src={`${API}/blog/photo/${last[0]?.slug}`} className='w-100'/>
           <Link href={`/${last[0]?.slug}`}> 
             <h2>{last[0]?.title}</h2>
           </Link>
@@ -133,7 +133,7 @@ const BanglaView = ({ router }) => {
       <div className='row'>
         <div className="col-6">
           <div className={styles.flexItem}>
-            <img src={`${IMG_API}/${last[1]?.photo}`} className='w-100'/>
+            <img src={`${API}/blog/photo/${last[1]?.slug}`} className='w-100'/>
             <Link href={`/${last[1]?.slug}`}> 
               <h2>{last[1]?.title}</h2>
             </Link>
@@ -141,7 +141,7 @@ const BanglaView = ({ router }) => {
         </div>
         <div className="col-6">
           <div className={styles.flexItem3}>
-            <img src={`${IMG_API}/${last[2]?.photo}`} className='w-100'/>
+            <img src={`${API}/blog/photo/${last[2]?.slug}`} className='w-100'/>
             <Link href={`/${last[2]?.slug}`}> 
               <h2>{last[2]?.title}</h2>
             </Link>
@@ -169,7 +169,7 @@ const BanglaView = ({ router }) => {
       <div className='row mt-3'>
       {america && america?.map((data) => 
       <div className='col-lg-3 col-6' key={data._id}>
-          <Image src={`${IMG_API}/${data?.photo}`} width = '100' height = '60' layout="responsive" />
+          <Image src={`${API}/blog/photo/${data?.slug}`} width = '100' height = '60' layout="responsive" />
           <Link href={`/${data?.slug}`}>
           <a className='text-start Nheading pb-2 pt-3 d-block'>
               {data?.title}
@@ -198,7 +198,7 @@ const BanglaView = ({ router }) => {
           </Link>
             </div>
             <div className='col-4'>
-            <Image src={`${IMG_API}/${data?.photo}`} width = '100' height = '60' layout="responsive" />
+            <Image src={`${API}/blog/photo/${data?.slug}`} width = '100' height = '60' layout="responsive" />
           
             </div>
           
