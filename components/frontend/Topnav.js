@@ -65,7 +65,7 @@ const Topnav = () => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     
     let today = new Date();
-    let date =''+''+today.getDate()+''+monthNames[(today.getMonth())]+''+today.getFullYear();
+    let date =''+''+today.getDate()+' '+monthNames[(today.getMonth())]+' '+today.getFullYear();
     let dayName = days[today.getDay()];
 
 
