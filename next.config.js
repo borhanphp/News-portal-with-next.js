@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['modern-dungarees-calf.cyclic.app'],
+    domains: ['modern-dungarees-calf.cyclic.app', 'bdtech.live'],
   },
   publicRuntimeConfig:{
     
