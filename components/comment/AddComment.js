@@ -10,6 +10,13 @@ const AddComment = ({postId}) => {
 
     const [data, setData] = useState([]);
     const [reply, setReply] = useState([]);
+    const [successNotify, setSuccessNotify] = useState(false);
+
+    useEffect(() => {
+      setTimeout(() => {
+        setSuccessNotify(false);
+      }, 10000);
+  } , []);
 
     useEffect(() => {
         getComment();
@@ -60,6 +67,7 @@ const AddComment = ({postId}) => {
             .then((res) => {
               setValues({ ...values, error: false, success: false, name: '', comment: '', removed: !removed, reload: !reload  });
               getComment();
+              setSuccessNotify(true);
               getReply();
             }).catch((err) => console.log(err));
      
@@ -112,6 +120,7 @@ const AddComment = ({postId}) => {
                 <button className={styles.button} type="submit">
                     {isUpdating ? "Update" : "Post Comment"}  
                 </button>
+                <p className='text-dark'>{successNotify ? 'Successfully Submitted, Your comment sent for approval.' : ''}</p>
                 </div>
             </form>
             </div>

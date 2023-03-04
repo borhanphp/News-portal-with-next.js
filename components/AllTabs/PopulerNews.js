@@ -5,26 +5,32 @@ import styles from '../../styles/Tabs.module.css'
 
 
 
-const PopulerNews = () => {
+const PopularNews = ({clearR}) => {
 
   const [last, setLastNews] = useState([]);
 
+
+  const clearMe = () => {
+    clearR();
+}
 	// Latest news
 	useEffect(() => {
-		fetch(`${API}/sidenews`).then((res)=>{return res.json()}).then((data)=>{setLastNews(data)})}, []); 
+		fetch(`${API}/popular`).then((res)=>{return res.json()}).then((data)=>{setLastNews(data)})}, []);
 
+   
 
   return (
   <>
     <div className={styles.FirstTab}>
             {last && last?.map((latest) =>
-              <p className="py-2"><i className="fas fa-snowflake text-danger"></i>
-                  <Link href={`/blogs/${latest.slug}`}>
+              <p className="py-2" onClick={clearMe}><i className="fas fa-snowflake text-danger"></i>
+                  <Link href={`/${latest.slug}`}>
                     <a className="text-dark font-weight-normal">
-                        {latest.title}
+                        {latest?.title}
                     </a>
                   </Link>
               </p>
+               
             )}
            
     </div>
@@ -33,4 +39,4 @@ const PopulerNews = () => {
   </>
   );
 };
-export default PopulerNews;
+export default PopularNews;

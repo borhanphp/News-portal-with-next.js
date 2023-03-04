@@ -13,13 +13,13 @@ const Loading = () => {
         backgroundColor: 'white'
       }}
     >
-      <img 
+      {/* <img 
         src="/newloder.gif" 
         alt="Loading..."
         style={{
           width: "100%",
         }}
-      />
+      /> */}
     </div>
   )
 }

@@ -41,24 +41,19 @@ export const signup = (user) => {
 
 
 
-export const signin = (user) => {
-    
-    let headers = new Headers();
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/json');
-
-
-
+export const signin = user => {
     return fetch(`${API}/signin`, {
-        mode: 'cors',
         method: 'POST',
-        headers: headers,
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(user)
     })
-    .then(response => {
-        return response.json();
-    })
-    .catch(err => console.log(err));
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
 };
 
 

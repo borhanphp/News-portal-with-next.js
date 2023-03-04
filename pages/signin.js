@@ -1,21 +1,35 @@
 import Layout from "../components/Layout";
 import Head from 'next/head';
 import SigninComponent from "../components/auth/SigninComponent";
-import StyleLinks from "../components/StyleLinks";
 import SigninStyle from "../components/SigninStyle";
+import Admin from '../components/auth/Admin';
+import { withRouter } from 'next/router';
 
-const Signin = () => {
+const Signin = ({ router }) => {
 
-
+ 
+    const showRedirectMessage = () => {
+        if (router.query.message) {
+            return <div className="alert alert-danger">{router.query.message}</div>;
+        } else {
+            return;
+        }
+    };
 
 
   return (
     <>
-      
-      <SigninComponent />
-      <SigninStyle/>
+     <Layout>
+        <Admin>
+          <div className="row">
+              <div className="col-md-6 offset-md-3">{showRedirectMessage()}</div>
+          </div>
+          <SigninComponent />
+          <SigninStyle/>
+        </Admin>
+    </Layout>
     </>
   );
 };
 
-export default Signin;
+export default withRouter(Signin);

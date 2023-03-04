@@ -6,8 +6,10 @@ import { API, DOMAIN_IP, IMG_API } from '../../config';
 import Tabs from '../TabComponent/Tabs';
 import Postsidebar from '../Postsidebar';
 import {TiDelete} from 'react-icons/ti';
+import ReactPaginate from 'react-paginate';
 
-const Search = ({showSearch, passRes, clearA}) => {
+const Search = ({showSearch, passRes, clearA, currentPage}) => {
+   
 
     const hideSearch = () => {
         showSearch();
@@ -18,20 +20,28 @@ const Search = ({showSearch, passRes, clearA}) => {
         search: undefined,
         results: [],
         searched: false,
-        message: ''
+        message: '',
     });
 
     const { search, results, searched, message } = values;
 
-    const searchSubmit = e => {
-        e.preventDefault();
-        listSearch({ search }).then(data => {
-            setValues({ ...values, results: data, searched: true, message: `${data.length} খবর পাওয়া গেছে` });
-            passResult(data);
+    useEffect(async () => {
+        searchSubmit({ preventDefault: () => {} });
+      }, [currentPage]);
+    
 
-            console.log(data);
+    const searchSubmit = e => {
+
+        e.preventDefault();
+        listSearch({ search }, currentPage).then(data => {
+          setValues({ ...values, results: data, searched: true, message: `${data?.length} খবর পাওয়া গেছে` });
+          passResult(data);
         });
-    };
+      };
+
+     
+
+      
 
     const passResult = (results) => {
         passRes(results);
@@ -65,7 +75,7 @@ const Search = ({showSearch, passRes, clearA}) => {
                                         <div className='row'>
                                             <div className='col-lg-12 border row'>
                                                 <div className='col-lg-4'>
-                                                <img src={`${IMG_API}/${blog?.photo}`} className='w-100 p-3' style={{height: "100%"}}/>
+                                                <img src={`${API}/blog/photo/${blog?.slug}`} className='w-100 p-3' style={{height: "100%"}}/>
                                                 </div>
                                                 <div className='col-lg-8 row'>
                                                     <div className='col-lg-12'>
@@ -92,7 +102,7 @@ const Search = ({showSearch, passRes, clearA}) => {
                     </div>
 
                     <div className='col-4'>
-                        <Postsidebar/>
+                        <Postsidebar clearN = {hideSearch}/>
 
                     </div>
                 </div>
@@ -108,8 +118,8 @@ const Search = ({showSearch, passRes, clearA}) => {
        
         <form onSubmit={(e) => searchSubmit(e)} className="search_form">
             <div className="input-group mb-3">
-				<input type="text" className="form-control" placeholder="এখানে খুঁজুন" onChange={handleChange} />
-				<button className="btn btn-primary brandcolorbg" type="submit">খুঁজুন</button>
+				<input type="text" className="form-control" placeholder="Write Something Here" onChange={handleChange} />
+				<button className="btn btn-primary brandcolorbg" type="submit">Search</button>
 				{/* <button className="btn" type="button"> x </button> */}
                 <span onClick={hideSearch}><TiDelete size={40} style={{color: "red", cursor: "pointer"}}/></span>
 			</div>
@@ -121,9 +131,7 @@ const Search = ({showSearch, passRes, clearA}) => {
 
     return (
        <>
-        {/* {searched ? <div style={{ marginTop: '0', marginBottom: '0', maxHeight: "600px", overflowY: "scroll" }}>{searchedBlogs(results)}</div> : <div>{searchForm()}</div>} */}
         {searchForm()}
-       
        </>
     );
 };

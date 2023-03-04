@@ -4,8 +4,24 @@ import { API, IMG_API } from '../../config';
 import {getCookie} from '../../actions/auth';
 import {getProfile, create} from '../../actions/user';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Users = ({ router }) => {
+
+
+    
+    const successmsg = () => toast.success("Created Successfully !", {
+        position: toast.POSITION.TOP_RIGHT
+      });
+
+    const deletemsg = () => toast.error("User Deleted !", {
+        position: toast.POSITION.TOP_RIGHT
+    });
+    const updatemsg = () => toast.success("Updated Successfully!", {
+        position: toast.POSITION.TOP_RIGHT
+    });
+
     const [msg, setMsg] = useState(false);
     const [success, setSuccess] = useState('');
     const [allUsers, setAllUsers] = useState([]);
@@ -22,11 +38,12 @@ const Users = ({ router }) => {
         error: false,
         loading: false,
         photo: '',
-        formData: ''
+        formData: '',
+        saving: ''
     });
 
     const token = getCookie('token');
-    const { reload, username, name, email, about, password, role, error, loading, id, photo, formData } = values;
+    const { reload, username, saving, name, email, about, password, role, error, loading, id, photo, formData } = values;
 
     useEffect(() => {
         getUsers();
@@ -60,6 +77,7 @@ const Users = ({ router }) => {
             }
         }).then(() => {
             getUsers();
+            deletemsg();
         });
     };
 
@@ -104,6 +122,7 @@ const Users = ({ router }) => {
     
     
     const createUser2 = (e) => {
+        setValues({...values, saving: 'Saving...'})
         e.preventDefault();
         const url = `${API}/usercreate`;
         axios.post(url, formData, { headers: {"Authorization" : `Bearer ${token}`} })
@@ -114,14 +133,16 @@ const Users = ({ router }) => {
                 getUsers();
         }).then(() => {
             setValues({
-                ...values, name: '', username: '', email: '', about: '', role: '', password: '', error: false, removed: false, reload: true
+                ...values, name: '', saving: '', username: '', email: '', about: '', role: '', password: '', error: false, removed: false, reload: true
             });
            setImage('')
            getUsers();
+           successmsg();
         });
     }
 
     const updateUser2 = (e) => {
+        setValues({...values, saving: 'Updating...'})
         e.preventDefault();
         const url = `${API}/userupdate/${id}`;
         axios.put(url, formData, { headers: {"Authorization" : `Bearer ${token}`} })
@@ -132,10 +153,11 @@ const Users = ({ router }) => {
             setSuccess('User Updated');
             setMsg(true);
             setValues({
-                ...values, name: '', username: '', email: '', about: '', role: '', password: '', error: false, removed: false, reload: true
+                ...values, name: '', saving: '', username: '', email: '', about: '', role: '', password: '', error: false, removed: false, reload: true
             });
            setImage('')
            getUsers();
+           updatemsg();
         });
     }
     
@@ -161,9 +183,21 @@ const Users = ({ router }) => {
                         </div>
                     </div>
 
-                    {msg === true ?  <div className="">
+                    {/* {msg === true ?  <div className="">
                         {showSuccess()}
-                    </div>    : ''}
+                    </div>    : ''} */}
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
+                    />
 
                     <div className="page-wrapper">
                         <div className="container-fluid">
@@ -214,11 +248,11 @@ const Users = ({ router }) => {
                                                     value={role} 
                                                     class="form-select" aria-label="Default select example">
                                                     <option className="text-muted" selected>Select</option>
-                                                    <option value="1">Admin</option>
-                                                    <option value="2">Super Admin</option>
-                                                    <option value="3">Administrator</option>
+                                                    <option value="1">Super Admin</option>
+                                                    {/* <option value="2">Super Admin</option> */}
+                                                    {/* <option value="3">Administrator</option> */}
                                                     <option value="4">Editor</option>
-                                                    <option value="0">User</option>
+                                                    {/* <option value="0">User</option> */}
                                                 </select>
                                                 </div>
 
@@ -242,6 +276,7 @@ const Users = ({ router }) => {
                                             
 
                                                 <div className='row'>
+                                                    {saving === '' ?
                                                     <div className='col-6'>
                                                     {
                                                         isUpdating == "" 
@@ -251,7 +286,17 @@ const Users = ({ router }) => {
                                                         <button className="btn text-white" style={{backgroundColor: "gray"}} onClick={updateUser2}>Update</button>
                                                     }
                                                     </div>
-
+                                                    :
+                                                    <div className='col-6'>
+                                                    {
+                                                        isUpdating == "" 
+                                                        ? 
+                                                        <button className="btn text-white" style={{backgroundColor: "gray"}} disabled>{saving}</button>
+                                                        :
+                                                        <button className="btn text-white" style={{backgroundColor: "gray"}} disabled>{saving}</button>
+                                                    }
+                                                    </div>
+                                                    }
                                                     <div className='col-6'>
                                                         <button onClick={clearBox} className="btn btn-light float-end">
                                                             Clear
@@ -295,7 +340,7 @@ const Users = ({ router }) => {
                                                             <td>{user.name}</td>
                                                             <td>{user.username}</td>
                                                             <td>{user.email}</td>
-                                                            {user?.role === 1 ?  <td>Admin</td> : <td>User</td>}
+                                                            {user?.role === 1 ?  <td>Super Admin</td> : <td>Editor</td>}
                                                             <td>
                                                             <button className="btn text-white btn-sm" style={{backgroundColor: "gray"}} onClick={() => updateUser(user._id, user.name, user.username, user.email, user.about, user.role, user.password, user?.photo)}>Edit</button>
                                                             <button className='btn btn-danger btn-sm' onClick={() => deleteConfirm(user._id)}>Delete</button>

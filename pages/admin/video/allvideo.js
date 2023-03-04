@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
 import StyleLinks from '../../../components/StyleLinks';
-import AllVideo from '../../../components/crud/AllVideo';
+import AllVideo from '../../../components/admin/crud/AllVideo';
 
 const allvideo = () => {
   return (

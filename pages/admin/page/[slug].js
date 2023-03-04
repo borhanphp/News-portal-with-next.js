@@ -1,5 +1,5 @@
 import Layout from '../../../components/Layout';
-import UpdatePage from '../../../components/page/UpdatePage';
+import UpdatePage from '../../../components/admin/page/UpdatePage';
 import StyleLinks from '../../../components/StyleLinks';
 
 const Page = () => {

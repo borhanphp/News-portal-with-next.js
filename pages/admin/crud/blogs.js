@@ -1,11 +1,7 @@
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
-import BlogRead from '../../../components/crud/BlogRead';
-import Link from 'next/link';
-import Head from 'next/head';
-import Sidebar from '../../../components/Sidebar';
+import BlogRead from '../../../components/admin/crud/BlogRead';
 import StyleLinks from '../../../components/StyleLinks';
-import Header from '../../../components/Header';
 
 const Blog = () => {
 

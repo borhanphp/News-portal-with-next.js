@@ -3,6 +3,7 @@ import Layout from '../../components/Layout';
 import Admin from '../../components/auth/Admin';
 import Dashboard from '../../components/Dashboard';
 import StyleLinks from '../../components/StyleLinks';
+import Private from '../../components/auth/Private';
 
 
 const AdminIndex = () => {
@@ -10,10 +11,12 @@ const AdminIndex = () => {
     <>
 
     <Layout>
-      <Admin>
-        <Dashboard/>
-        <StyleLinks />
-      </Admin>
+      <Private>
+        <Admin>
+          <Dashboard/>
+          <StyleLinks />
+        </Admin>
+      </Private>
     </Layout>
     </>
     

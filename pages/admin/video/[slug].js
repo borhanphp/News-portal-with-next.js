@@ -1,7 +1,7 @@
 import Layout from '../../../components/Layout';
 import UpdatePage from '../../../components/page/UpdatePage';
 import StyleLinks from '../../../components/StyleLinks';
-import UpdateVideo from '../../../components/crud/UpdateVideo';
+import UpdateVideo from '../../../components/admin/crud/UpdateVideo';
 
 const Video = () => {
     return (

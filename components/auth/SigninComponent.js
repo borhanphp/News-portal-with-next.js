@@ -18,6 +18,7 @@ const SigninComponent = () => {
 
   const {email, password, error, message, showFrom} = values;
 
+
   useEffect(() => {
      isAuth() && Router.push('/');
   }, []);
@@ -25,8 +26,9 @@ const SigninComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    //console.table({name, email, password, cpassword, error, message, showFrom});
+   
     setValues({...values, loading: true, error: false});
+    // console.table({name, email, password, error, message, showFrom});
     const user = {email, password};
 
 
@@ -34,8 +36,6 @@ const SigninComponent = () => {
       if(data.error){
         setValues({...values, error: data.error, loading: false });
       } else {
-        //token save
-        //
         authenticate(data, () => {
           if(isAuth() && isAuth().role === 0){
             Router.push(`/`);
@@ -52,6 +52,8 @@ const SigninComponent = () => {
   const handleChange = name => (e) => {
     setValues({...values, error: false, [name]: e.target.value });
   };
+
+ 
 
   // const showLoading = () => (loading ? <div  className="alert alert-info">Loading...</div> : '');
   const showError = () => (error ? <div  className="alert alert-danger">{error}</div> : '');
@@ -152,7 +154,7 @@ const SigninComponent = () => {
 
   return (
   <>
- 
+  
   {/* {showLoading()}
   {showMessage()} */}
   {loginForm()}

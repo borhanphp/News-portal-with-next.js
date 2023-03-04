@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import styles from "../../styles/Frontpage.module.css";
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import { API, DOMAIN_IP, IMG_API } from '../../config';
@@ -8,25 +9,11 @@ const SearchCard = ({ blog, clearN }) => {
     
 
 
-    const monthNames = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন","জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বার", "ডিসেম্বর"];
-    const days = ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'];
-    const bdate=["০","০১","০২","০৩","০৪","০৫","০৬","০৭","০৮","০৯","১০","১১","১২","১৩","১৪","১৫","১৬","১৭","১৮","১৯","২০","২১","২২","২৩","২৪","২৫","২৬","২৭","২৮","২৯","৩০","৩১"];
+    const monthNames = ["January", "February", "March", "April", "May", "June","July", "Augast", "September", "October", "November", "December"];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     
-    const entob = (input) => {
-        const bnumbers =["০","১","২","৩","৪","৫","৬","৭","৮","৯"];
-        var output = [];
-        for (var i = 0; i < input.length; ++i) {
-            if (bnumbers[input[i]]) {
-            output.push(bnumbers[input[i]]);
-            } else {
-            output.push(input[i]);
-            }
-        }
-        return output.join('');
-    };
-    
-    let today = new Date(blog.updatedAt);
-    let date =''+''+ monthNames[(today.getMonth())] +' '+ bdate[(today.getDate())]+','+' '+ entob((today.getFullYear().toString()));
+    let today = new Date(blog?.updatedAt);
+    let date =''+''+today.getDate()+' '+monthNames[(today.getMonth())]+' '+today.getFullYear();
     let dayName = days[today.getDay()];
 
     const clearS = () => {
@@ -35,11 +22,12 @@ const SearchCard = ({ blog, clearN }) => {
 
     return (
         <>
+        <div className=' hideinmobile'>
             <div className='row mx-0 mb-2 border border-secondary mb-2'>
-               <div className='col-lg-4'>
-                    <img src={`${IMG_API}/${blog?.photo}`} className='w-100 py-2 h-100'/>
+               <div className='col-4'>
+                    <img src={`${API}/blog/photo/${blog?.slug}`} className='w-100 py-2 h-100' style={{objectFit: 'cover'}}/>
                 </div>
-                <div className='col-lg-8 row'>
+                <div className='col-8 row'>
                     <div className='col-lg-12'>
                         <Link href={`/${blog.slug}`}>
                             <a className='text-start'>
@@ -56,6 +44,29 @@ const SearchCard = ({ blog, clearN }) => {
                     </div>
                 </div>
             </div>
+            </div>
+              {/* mobile view */}
+              <div className={`container-fluid hideindesktop`}>
+               
+               <div className={`row mt-3 mx-0 ${styles.mobileSbadow}`}>
+                 <div className='col-4 ps-1 py-1'>
+                   <img src={`${API}/blog/photo/${blog?.slug}`} width = '100%' height = '74' layout="responsive"/>
+                 </div>
+                 <div className='col-8 ps-2 font-banglaBold pt-1'>
+                   <p onClick={clearS}>
+                     <Link href={`/${blog.slug}`}>
+                       <a style={{fontSize: "18px", fontWeight: "bold"}}> 
+                       {blog?.title}
+                       </a>
+                     </Link>
+                   </p>
+                 </div>
+               </div>
+          
+             
+      
+    
+   </div>
         </>
     );
 };

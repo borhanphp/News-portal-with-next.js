@@ -169,11 +169,24 @@ export const updateBlog = (blog, token, slug) => {
         .catch(err => console.log(err));
 };
 
-export const listSearch = params => {
-    // console.log('search params', params);
-    let query = queryString.stringify(params);
-    // console.log('query params', query);
+export const listSearch = (params, page) => {
+    let query = queryString.stringify({ ...params, page });
     return fetch(`${API}/blogs/search?${query}`, {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+
+
+export const listSearchDashboard = (params, page) => {
+    // console.log('search params', params);
+    let query = queryString.stringify({ ...params, page });
+    // console.log('query params', query);
+    return fetch(`${API}/blogs/searchdashboard?${query}`, {
         method: 'GET'
     })
         .then(response => {
@@ -182,11 +195,11 @@ export const listSearch = params => {
         .catch(err => console.log(err));
 };
 
-export const listSearchDashboard = params => {
+export const PostList = (params, page) => {
     // console.log('search params', params);
-    let query = queryString.stringify(params);
+    let query = queryString.stringify({ ...params, page });
     // console.log('query params', query);
-    return fetch(`${API}/blogs/searchdashboard?${query}`, {
+    return fetch(`${API}/blogs/postlist?${query}`, {
         method: 'GET'
     })
         .then(response => {
@@ -202,6 +215,71 @@ export const listSearch2 = params => {
     let query = queryString.stringify(params);
     // console.log('query params', query);
     return fetch(`${API}/blogs/searching?${query}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const listSearchByAuthor = (params, page) => {
+    // console.log('search params', params);
+    let query = queryString.stringify({ ...params, page });
+    // console.log('query params', query);
+    return fetch(`${API}/searchbyuser?${query}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const listSearchByCategory = (params, page) => {
+    // console.log('search params', params);
+    let query = queryString.stringify({ ...params, page });
+    // console.log('query params', query);
+    return fetch(`${API}/searchbycategory?${query}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const listSearchByDate = (params, page) => {
+    // console.log('search params', params);
+    let query = queryString.stringify({ ...params, page });
+    // console.log('query params', query);
+    return fetch(`${API}/searchbydate?${query}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const listSearchByFeatured = (params, page) => {
+    // console.log('search params', params);
+    let query = queryString.stringify({ ...params, page });
+    // console.log('query params', query);
+    return fetch(`${API}/searchbyfeatured?${query}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const listSearchByStatus = (params, page) => {
+    // console.log('search params', params);
+    let query = queryString.stringify({ ...params, page });
+    // console.log('query params', query);
+    return fetch(`${API}/searchbystatus?${query}`, {
         method: 'GET'
     })
         .then(response => {

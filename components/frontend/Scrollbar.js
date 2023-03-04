@@ -1,34 +1,40 @@
 import styles from '../../styles/Layout.module.css'
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { API } from '../../config';
 import SquareIcon from '@mui/icons-material/Square';
 import Link from 'next/link';
 import Marquee from "react-fast-marquee";
 
-const Scrollbar = () => {
+const Scrollbar = ({iCross}) => {
     
     const [lastNews, setLastNews] = useState([]);
 
     useEffect(() => {
-        console.log(API)
-        fetch(`${API}/scroll`).then((res)=>{return res.json()}).then((data)=>{setLastNews(data)})}, []); 
-  return (
+        fetch(`${API}/onlycat?limit=5&cat=63f90d902d096eb005ea7639`).then((res)=>{return res.json()}).then((data)=>{setLastNews(data)})}, []); 
+  
+  
+        const clearSearch = () => {
+            iCross();
+        }
+    
+        
+return (
     <div className='container px-0'>
        <div className={"scrolling-wrapper "+styles.bigscroll}>
-            {/* <div className="scroll-title">
-                <span className="intro-banner-vdo-play-btn pinkBg">
+            <div className="scroll-title">
+                {/* <span className="intro-banner-vdo-play-btn pinkBg">
 					<span className="ripple pinkBg"></span>
 					<span className="ripple pinkBg"></span>
 					<span className="ripple pinkBg"></span>
-                </span>
-                <h2>Headline</h2>
-            </div> */}
-            <div className="scrolling bg-white">
-                <Marquee pauseOnHover={true} gradient={false} speed={40} className="bg-white fw-bold pt-1"> 
+                </span> */}
+                <h2 className="mt-2">TOP PICK</h2>
+            </div>
+            <div className="scrolling">
+                <Marquee pauseOnHover={true} gradient={false} speed={20} className="text-white fw-bold pt-1"> 
                     {lastNews && lastNews.slice(0, 5).map((last, index) =>
-                        <Link href={`/blogs/${last?.slug}`} key={index}>
-                            <span className={styles.text_style} ><SquareIcon fontSize='small'/>&nbsp;{last?.title}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <Link href={`/${last?.slug}`} key={index}>
+                            <span className={styles.text_style} onClick={clearSearch}><SquareIcon fontSize='small'/>&nbsp;{last?.title}&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         </Link>
                     )}
                   
@@ -47,10 +53,10 @@ const Scrollbar = () => {
                 </div>
 
                 <div className="col-9 col-sm-10 col-md-11 bg-danger">
-                    <marquee className="bg-white fw-bold pt-0">
+                    <marquee className="text-white fw-bold pt-0">
                         {lastNews && lastNews.slice(0, 5).map((last, i) =>
-                            <Link href={`/blogs/${last?.slug}`} key={i}>
-                                <span style={{cursor: "pointer"}} ><SquareIcon fontSize='small'/>&nbsp;{last?.title}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <Link href={`/${last?.slug}`} key={i}>
+                                <span style={{cursor: "pointer"}} onClick={clearSearch}><SquareIcon fontSize='small'/>&nbsp;{last?.title}&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             </Link>
                         )}
                     </marquee>  

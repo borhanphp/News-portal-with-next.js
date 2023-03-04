@@ -5,9 +5,13 @@ import styles from '../../styles/Tabs.module.css'
 
 
 
-const RecentNews = () => {
+const RecentNews = ({clearR}) => {
 
   const [last, setLastNews] = useState([]);
+
+  const clearMe = () => {
+    clearR();
+}
 
 	// Latest news
 	useEffect(() => {
@@ -18,8 +22,8 @@ const RecentNews = () => {
   <>
     <div className={styles.FirstTab}>
             {last && last?.map((latest) =>
-              <p className="py-2"><i className="fas fa-snowflake text-danger"></i>
-                  <Link href={`/blogs/${latest.slug}`}>
+              <p className="py-2"  onClick={clearMe}><i className="fas fa-snowflake text-danger"></i>
+                  <Link href={`/${latest.slug}`}>
                     <a className="text-dark font-weight-normal">
                         {latest.title}
                     </a>

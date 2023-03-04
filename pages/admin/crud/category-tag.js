@@ -1,14 +1,7 @@
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
-import Category from '../../../components/crud/Category';
-import Tag from '../../../components/crud/Tag';
-import Link from 'next/link';
-import Sidebar from '../../../components/Sidebar';
-import Head from 'next/head';
+import Category from '../../../components/admin/crud/Category';
 import StyleLinks from '../../../components/StyleLinks';
-import Header from '../../../components/Header';
-import {API} from '../../../config';
-
 
 const CategoryTag = () => {
 
@@ -28,16 +21,5 @@ const CategoryTag = () => {
         </>
     );
 };
-
-
-// export const getServerSideProps = async () => {
-//     const allCat = await fetch(`${API}/categories`);
-//     const categories = await allCat.json();
-//     return {
-//         props: {
-//             categories
-//         }
-//     }
-// }
 
 export default CategoryTag;

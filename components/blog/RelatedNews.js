@@ -14,31 +14,13 @@ const RelatedNews = ({ blog }) => {
                         <img
                             className="img img-fluid rounded "
                             style={{ height: '250px', width: '100%' }}
-                            src={`${IMG_API}/${blog?.photo}`}
+                            src={`${API}/blog/photo/${blog?.slug}`}
                             alt={blog.title}
                         />
 						<h5 className={styles.releted_title}>{blog.title}</h5>
                     </a>
                 </Link>
             </section>
-
-            {/*<div className="card-body">
-                <section>
-                    <Link href={`/${blog.slug}`}>
-                        <a>
-                            
-                        </a>
-                    </Link>
-                    <div className="card-text">{renderHTML(blog.excerpt)}</div>
-                </section>
-            </div>
-
-            <div className="card-body">
-                 Posted {moment(blog.updatedAt).fromNow()} by{' '}
-                <Link href={`/profile/${blog.postedBy.username}`}>
-                    <a>{blog.postedBy.username}</a>
-    </Link>
-            </div>*/}
         </div>
     );
 };

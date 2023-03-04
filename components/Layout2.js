@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
 import Allnav from './Allnav';
-import Footer from './Footer';
+import Footer from './frontend/Footer';
 import Navbar from './frontend/Navbar';
 import { SearchContext } from '../service/SearchContext';
-import Scrollbar from './frontend/Scrollbar';
-import Topnav from './frontend/Topnav';
-import Logosec from './frontend/Logosec';
 
 const Layout2 = ({children}) => {
 
@@ -19,20 +16,27 @@ const Layout2 = ({children}) => {
     setHideView(false);
   }
 
+  const crossLogoTrue = () => {
+    setHideL(true);
+    
+  }
+
+  const crossLogo = () => {
+    setHideL(false);
+  }
+
 
   return (
     <>
+   
      <SearchContext.Provider value={hideview}>
-      <div className='container-fluid'>
-        <Topnav/>
-        <Logosec/>
-        <Scrollbar/>
-        <Navbar searchForNav = {searchFunc} onCross={crossClick}/>
-       
+      <div className='container-fluid'> 
+        <Navbar crossLogoTrue = {crossLogoTrue} searchForNav = {searchFunc} onCross={crossClick}/>
         {children}
       </div>
       <Footer/>
       </SearchContext.Provider>
+   
     </>
   )
 };

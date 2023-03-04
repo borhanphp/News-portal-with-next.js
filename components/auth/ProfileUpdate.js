@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Router from 'next/router';
 import { getCookie, isAuth, updateUser } from '../../actions/auth';
 import { getProfile, update } from '../../actions/user';
@@ -18,11 +18,12 @@ const ProfileUpdate = () => {
         success: false,
         loading: false,
         photo: '',
+        previewimage: '',
         userData: ''
     });
 
     const token = getCookie('token');
-    const { username, name, email, about, password, error, success, loading, photo, userData } = values;
+    const { username, previewimage, name, email, about, password, error, success, loading, photo, userData } = values;
 
     const init = () => {
         getProfile(token).then(data => {
@@ -34,7 +35,8 @@ const ProfileUpdate = () => {
                     username: data?.username,
                     name: data?.name,
                     email: data?.email,
-                    about: data?.about
+                    about: data?.about,
+                    previewimage: data?.photo
                 });
             }
         });
@@ -84,9 +86,16 @@ const ProfileUpdate = () => {
                         loading: false
                     });
                 });
+                init();
+                setImage('');
             }
         });
     };
+
+    const ref = useRef();
+    const reset = () => {
+        ref.current.value = "";
+      }
 
     const profileUpdateForm = () => (
        
@@ -100,7 +109,7 @@ const ProfileUpdate = () => {
                     <div className="user-bg">
                       {" "}
                       <img
-                          src={`${IMG_API}/${photo}`}
+                          src={`${IMG_API}/${previewimage}`}
                           className="img img-fluid img-thumbnail mb-3"
                           style={{ maxHeight: 'auto', maxWidth: '100%' }}
                           alt="user profile"
@@ -148,7 +157,7 @@ const ProfileUpdate = () => {
                                   <label htmlFor="formFileSm" className="form-label">
                                       Profile Photo
                                   </label>
-                                  <input onChange={handleChange('photo')} type="file" accept="image/*" className="form-control form-control-sm" id="formFileSm" />
+                                  <input ref={ref} onChange={handleChange('photo')} type="file" accept="image/*" className="form-control form-control-sm" id="formFileSm" />
                               </div>
                           </div>
 
@@ -158,7 +167,7 @@ const ProfileUpdate = () => {
                       </div>
 
                       <div>
-                          <button type="submit" className="btn text-white" style={{backgroundColor: "gray"}}>
+                          <button type="submit" className="btn text-white" style={{backgroundColor: "gray"}} onClick={reset}>
                               Submit
                           </button>
                       </div>

@@ -12,7 +12,7 @@ import {AiOutlineHome} from 'react-icons/ai';
 import { SearchContext } from '../../service/SearchContext';
 
 const Category = ({ category, subcategory, blogs, query, limit, page, count }) => {
-    
+  
     
     const hideview = useContext(SearchContext);
   
@@ -21,6 +21,7 @@ const Category = ({ category, subcategory, blogs, query, limit, page, count }) =
     useEffect(() => {
         let totalBlogs = count;
         let totalPage = Math.ceil(totalBlogs / limit);
+        totalPage = totalPage - 1;
         setpageCount(totalPage);    
     }, [blogs, limit])
    
@@ -36,7 +37,7 @@ const Category = ({ category, subcategory, blogs, query, limit, page, count }) =
         setTimeout(() => {
             setLoading(false);
         }
-            , 1000);
+            , 100);
     }, []);
 
     
@@ -49,7 +50,7 @@ const Category = ({ category, subcategory, blogs, query, limit, page, count }) =
    
 
     const handlePageClick = async (data) => {
-        let currentPage = data.selected + 1;
+        let currentPage = data.selected + 0;
         const serverPosts = await fetchPosts(currentPage);
         setItems(serverPosts.blogs);
         window.scrollTo(0, 0)
@@ -88,7 +89,7 @@ const Category = ({ category, subcategory, blogs, query, limit, page, count }) =
                 {hideview === true ? '' : 
                 <main>
                     
-                    <div className="container mt-3 px-0">
+                    <div className="container px-0">
                         <div className='row align-items'>
                             <div className="col-md-8 col-lg-8">
                                 <div className='mb-3 p-2 pb-1' style={{borderLeft: '1px solid lightblue', borderBottom: '1px solid #d3d3d345', borderRight: '1px solid lightblue', borderTop:'1px solid lightblue'}}>
@@ -115,13 +116,19 @@ const Category = ({ category, subcategory, blogs, query, limit, page, count }) =
                                 </div>
                                 : '' }
                                 {loading ? (
-                                    <Loading/>
+                                    ""
                                 ) : (
                                     <div className="row">
                                         {items?.map((b, i) => (
-                                            <div key={i} className="col-md-12 col-lg-12">
-                                                <Card key={i} blog={b}/>
-                                            </div>
+                                            <>
+                                                <div key={i} className="col-md-12 col-lg-12 px-1 hideinmobile">
+                                                    <Card key={i} blog={b}/>
+                                                </div>
+
+                                                <div key={i} className="col-md-12 col-lg-12 ps-2 pe-0 hideindesktop">
+                                                    <Card key={i} blog={b}/>
+                                                </div>
+                                            </>
                                         ))}
                                     </div>
                                 )}
@@ -175,7 +182,7 @@ Category.getInitialProps = ({ query }) => {
 // (`${API}/category/${query.slug}?limit=10&page=1`)
 
     let limit = 10;
-    let page = 1;
+    let page = 0;
     return singleCategory(query.slug, limit, page).then(data => {
         if (data?.error) {
             console.log(data?.error);

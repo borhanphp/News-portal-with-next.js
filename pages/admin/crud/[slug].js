@@ -1,6 +1,6 @@
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
-import BlogUpdate from '../../../components/crud/BlogUpdate';
+import BlogUpdate from '../../../components/admin/crud/BlogUpdate';
 import StyleLinks from '../../../components/StyleLinks';
 
 const Blog = () => {

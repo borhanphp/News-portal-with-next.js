@@ -1,15 +1,15 @@
 .ul {
 	list-style-type: none;
-    margin: 1px 0;
+    margin: 3px 0;
     padding: 0;
     overflow: hidden;
     float: left;
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
-    line-height: 20px;
+    line-height: 24px;
 }
 .uleng {
     font-size: 16px;
@@ -244,4 +244,52 @@ border-radius: 5px;
   .showmbvar {
     display: block;
   }
+}
+
+
+.WrapperEng {
+    height: 31px;
+    font-weight: bold;
+    border-bottom: 1px solid antiquewhite;
+    font-size: 16px;
+}
+
+.Wrapper_inner_eng {
+    margin-left: 0px;
+    margin-right: 0px;
+    background: white;
+    align-items: center;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 10px;
+}
+
+.Wrapper_inner_left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 10px;
+    height: 100%;
+}
+
+.DatesetEng {
+    background: #3e3e3e0d;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    font-size:14px;
+}
+
+.TopmidEng {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 13px;
+    color: #2980b9;
+}
+
+.Socialmini {
+    display: flex;
 }

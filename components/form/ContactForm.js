@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { emailContactForm } from '../../actions/form';
 
@@ -80,18 +79,18 @@ const ContactForm = ({ authorEmail }) => {
                 </div>
 
                 <div>
-                    <button className="btn btn-primary">{buttonText}</button>
+                    <button className="btn btn-secondary mt-2">{buttonText}</button>
                 </div>
             </form>
         );
     };
 
     return (
-        <>
+        <React.Fragment>
             {showSuccessMessage()}
             {showErrorMessage()}
             {contactForm()}
-        </>
+        </React.Fragment>
     );
 };
 

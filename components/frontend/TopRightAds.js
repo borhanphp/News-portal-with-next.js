@@ -29,7 +29,7 @@ const TopRightAds = () => {
                     <Link href={item?.link}>
                     <div className='wp-block-image' key={index}>
 
-                    <img className='middle-header-banner' src={`${IMG_API}/${item?.photo}`} alt={item?.alt} 
+                    <img className='middle-header-banner' src={`${API}/ads/photo/${item?.slug}`} alt={item?.alt} 
                     loading="lazy" />
                     </div>
                     </Link>

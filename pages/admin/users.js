@@ -2,13 +2,18 @@ import React from 'react'
 import Users from '../../components/admin/Users';
 import StyleLinks from '../../components/StyleLinks';
 import { API } from '../../config';
+import Layout from '../../components/Layout';
+import Admin from '../../components/auth/Admin';
 
 const users = ({users}) => {
   return (
     <>
-    
-    <Users users={users} />
-    <StyleLinks/>
+       <Layout>
+          <Admin>
+            <Users users={users} />
+            <StyleLinks/>
+          </Admin>
+        </Layout>
    </>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 import { useState, useEffect, useMemo } from 'react';
-import {API, DOMAIN_IP} from '../../config'
+import {API, DOMAIN_IP, IMG_API} from '../../config'
 import { getCookie, isAuth } from '../../actions/auth';
 import ReactPaginate from 'react-paginate'
 
@@ -109,10 +109,10 @@ const Gallery = () => {
                                               {items?.map((image) => 
                                               
                                                 <div className='col-md-2 mb-2 text-center' key={image._id}>
-                                                  <Link href={`${DOMAIN_IP}/_next/image?url=${image?.photo}&w=640&q=50`}>
+                                                  <Link href={`${IMG_API}/${image?.photo}`}>
                                                     <a target="_blank">
                                                     <img 
-                                                      src = {`${DOMAIN_IP}/_next/image?url=${image?.photo}&w=640&q=50`}
+                                                      src = {`${API}/blog/photo/${image?.slug}`}
                                                       width = '100%' 
                                                       height = '110px' 
                                                       style={{

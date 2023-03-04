@@ -1,21 +1,22 @@
 import React, {useContext} from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '../../components/Layout';
+import Layout from '../components/Layout';
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react';
-import { singleBlog, listRelated } from '../../actions/blog';
-import { API, DOMAIN, APP_NAME, FB_APP_ID, DOMAIN_IP, IMG_API } from '../../config';
-import styles from '../../styles/Slag.module.css';
+import { singleBlog, listRelated } from '../actions/blog';
+import { API, DOMAIN, APP_NAME, FB_APP_ID, DOMAIN_IP, IMG_API } from '../config';
+import styles from '../styles/Slag.module.css';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
-import SmallCard from '../../components/blog/SmallCard';
-import RelatedNews from '../../components/blog/RelatedNews';
-import Postsidebar from '../../components/Postsidebar';
+import SmallCard from '../components/blog/SmallCard';
+import RelatedNews from '../components/blog/RelatedNews';
+import Postsidebar from '../components/Postsidebar';
 import axios from 'axios';
-import SingleSmallAds from '../../components/frontend/BelowPostAds';
+import SingleSmallAds from '../components/frontend/BelowPostAds';
 import { AiOutlineClockCircle, AiOutlinePrinter, AiOutlineHome } from 'react-icons/ai';
-// import { SearchContext } from '../../service/SearchContext';
+import {BsChevronDoubleRight} from 'react-icons/bs';
+import { SearchContext } from '../service/SearchContext';
 import {
     FacebookShareButton,
     LinkedinShareButton,
@@ -37,11 +38,11 @@ import {
     TwitterIcon,
     WhatsappIcon,
   } from "react-share";
-import AddComment from '../../components/comment/AddComment';
+import AddComment from '../components/comment/AddComment';
 
 const SingleBlog = ({ blog, query }) => {
 
-	// const hideview = useContext(SearchContext);
+	const hideview = useContext(SearchContext);
 
     const [fontChange, setFontChange] = useState(false);
     const [related, setRelated] = useState([]);
@@ -66,14 +67,14 @@ const SingleBlog = ({ blog, query }) => {
                 {blog?.title} | {APP_NAME}
             </title>
             <meta name="description" content={blog?.mdesc} />
-            <link rel="canonical" href={`${DOMAIN_IP}/blogs/${query.slug}`} />
+            <link rel="canonical" href={`${DOMAIN_IP}/${query.slug}`} />
             <meta property="og:title" content={`${blog?.title}| ${APP_NAME}`} />
             <meta property="og:description" content={blog?.mdesc} />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN_IP}/blogs/${query.slug}`} />
+            <meta property="og:url" content={`${DOMAIN_IP}/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
-            <meta property="og:image" content={`${DOMAIN_IP}/_next/image?url=${blog?.photo}&w=1200&q=100`} />
+            <meta property="og:image" content={`${IMG_API}/${blog?.photo}`} />
             <meta property="og:image:type" content="image/jpg" />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
@@ -84,14 +85,11 @@ const SingleBlog = ({ blog, query }) => {
 
     const showRelatedBlog = () => {
         return related.map((blog, i) => (
-            <>
             <div className={`col-md-3 py-1 col-6 px-1`} key={i}>
                 <article>
                     <RelatedNews blog={blog} />
                 </article>
             </div>
-            
-            </>
         ));
     };
 
@@ -121,7 +119,7 @@ const SingleBlog = ({ blog, query }) => {
         return output.join('');
     };
     
-    let today = new Date(blog.updatedAt);
+    let today = new Date(blog?.updatedAt);
     let date =''+''+ monthNames[(today.getMonth())] +' '+ bdate[(today.getDate())]+','+' '+ entob((today.getFullYear().toString()));
     let dayName = days[today.getDay()];
 
@@ -129,7 +127,7 @@ const SingleBlog = ({ blog, query }) => {
         <React.Fragment>
             {head()}
             <Layout>
-			
+			{hideview === true ? '' : 
                 <main>
                     <article>
                     <div className="container px-0">
@@ -148,16 +146,16 @@ const SingleBlog = ({ blog, query }) => {
 												<span style={{
 													color: '#000',
 													cursor: "pointer"
-												}}> / {blog.categories.filter((item) => {return item.show === 'true'}).slice(0, 1).map((c) => 
-													<Link href={`/categories/${c.slug}`}>
-													<span>{c.name}</span>
+												}}> / {blog?.categories.slice(0, 1).map((c) => 
+													<Link href={`/category/${c.slug}`}>
+													<span>{c.name === "undefined" ? '' : c.name}</span>
 													</Link>
 												)}</span>
 											</h6>
 										</div>
                                         <div className={`${styles.underline}`}></div>
 										<h5 className='fs-2 pb-1 pt-3 fw-bold text-start'>
-											<span className={ fontChange === true ? `${styles.title_font}` : ""}>{blog.title}</span></h5>
+											<span className={ fontChange === true ? `${styles.title_font}` : ""}>{blog?.title}</span></h5>
 										{/* <p className="lead mt-3 mark">
 											Written by{' '}
 											<Link href={`/profile/${blog.postedBy.username}`}>
@@ -217,31 +215,33 @@ const SingleBlog = ({ blog, query }) => {
 										<div className="row my-2">
 										{/*<Image src={'/images/ukraine_refugee-2.jpg'} alt={blog.title} layout="intrinsic" /> */}
 											<img
-												src={`${IMG_API}/${blog?.photo}`}
-												alt={blog.title}
+												// src={`${IMG_API}/${blog?.photo}`}
+												src={`${API}/blog/photo/${blog?.slug}`}
+												alt={blog?.title}
 												className="img img-fluid featured-image"
 												style={{
 													height: "400px",
-													width: "100%"
+													width: "100%",
+													objectFit: 'cover'
 												}}
 											/>
 										</div>
 									
 										<div className="col-md-12 lead">
 										<div className={ fontChange === true ? `${styles.body_font}` : ""}>
-											{renderHTML(blog.body)}
+											{renderHTML(blog?.body)}
 											</div>
 										   
 											
 											
 											<div className={styles.social_box}>
-											<FacebookShareButton className={`${styles.social_icon_btn} ${styles.social_fb}`} children={<FacebookIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-											<LinkedinShareButton className={`${styles.social_icon_btn} ${styles.social_lnk}`} children={<LinkedinIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-											<PinterestShareButton className={`${styles.social_icon_btn} ${styles.social_pin}`} children={<PinterestIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-											<RedditShareButton className={`${styles.social_icon_btn} ${styles.social_red}`} children={<RedditIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-											<TumblrShareButton className={`${styles.social_icon_btn} ${styles.social_tum}`} children={<TumblrIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-											<TwitterShareButton className={`${styles.social_icon_btn} ${styles.social_twi}`} children={<TwitterIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-											<WhatsappShareButton className={`${styles.social_icon_btn} ${styles.social_what}`} children={<WhatsappIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
+											<FacebookShareButton className={`${styles.social_icon_btn} ${styles.social_fb}`} children={<FacebookIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+											<LinkedinShareButton className={`${styles.social_icon_btn} ${styles.social_lnk}`} children={<LinkedinIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+											<PinterestShareButton className={`${styles.social_icon_btn} ${styles.social_pin}`} children={<PinterestIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+											<RedditShareButton className={`${styles.social_icon_btn} ${styles.social_red}`} children={<RedditIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+											<TumblrShareButton className={`${styles.social_icon_btn} ${styles.social_tum}`} children={<TumblrIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+											<TwitterShareButton className={`${styles.social_icon_btn} ${styles.social_twi}`} children={<TwitterIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+											<WhatsappShareButton className={`${styles.social_icon_btn} ${styles.social_what}`} children={<WhatsappIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
 											
 											
 										  </div>
@@ -258,7 +258,7 @@ const SingleBlog = ({ blog, query }) => {
 											{related.slice(0, 3).map((blog) => 
 											<div className='col-4'>
 												<p>
-													<Link href={`/blogs/${blog?.slug}`}>
+													<Link href={`/${blog?.slug}`}>
 														<small style={{borderStyle: "none none dotted", cursor: "pointer", color: "#0065bf"}}>
 															{blog.title}
 														</small>
@@ -431,13 +431,13 @@ const SingleBlog = ({ blog, query }) => {
 										
 										
 										<div className={styles.social_box}>
-										<FacebookShareButton className={`${styles.social_icon_btn} ${styles.social_fb}`} children={<FacebookIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-										<LinkedinShareButton className={`${styles.social_icon_btn} ${styles.social_lnk}`} children={<LinkedinIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-										<PinterestShareButton className={`${styles.social_icon_btn} ${styles.social_pin}`} children={<PinterestIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-										<RedditShareButton className={`${styles.social_icon_btn} ${styles.social_red}`} children={<RedditIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-										<TumblrShareButton className={`${styles.social_icon_btn} ${styles.social_tum}`} children={<TumblrIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-										<TwitterShareButton className={`${styles.social_icon_btn} ${styles.social_twi}`} children={<TwitterIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
-										<WhatsappShareButton className={`${styles.social_icon_btn} ${styles.social_what}`} children={<WhatsappIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/blogs/${blog.slug}`}/>
+										<FacebookShareButton className={`${styles.social_icon_btn} ${styles.social_fb}`} children={<FacebookIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+										<LinkedinShareButton className={`${styles.social_icon_btn} ${styles.social_lnk}`} children={<LinkedinIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+										<PinterestShareButton className={`${styles.social_icon_btn} ${styles.social_pin}`} children={<PinterestIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+										<RedditShareButton className={`${styles.social_icon_btn} ${styles.social_red}`} children={<RedditIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+										<TumblrShareButton className={`${styles.social_icon_btn} ${styles.social_tum}`} children={<TumblrIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+										<TwitterShareButton className={`${styles.social_icon_btn} ${styles.social_twi}`} children={<TwitterIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
+										<WhatsappShareButton className={`${styles.social_icon_btn} ${styles.social_what}`} children={<WhatsappIcon className={styles.social_icon} size={32} round={true} />} url={`${DOMAIN_IP}/${blog.slug}`}/>
 										
 										
 									  </div>
@@ -454,7 +454,7 @@ const SingleBlog = ({ blog, query }) => {
 										{related.slice(0, 3).map((blog) => 
 										<div className='col-4'>
 											<p>
-												<Link href={`/blogs/${blog?.slug}`}>
+												<Link href={`/${blog?.slug}`}>
 													<small style={{borderStyle: "none none dotted", cursor: "pointer", color: "#0065bf"}}>
 														{blog.title}
 													</small>
@@ -530,7 +530,7 @@ const SingleBlog = ({ blog, query }) => {
                         <div className="container">
                             <div className='mt-4 mb-2'>
 								<div className='col-md-12'>
-								  <p className={styles.america}>আরো পড়ুন</p>
+								  <p className={styles.america}>আরো পড়ুন  <BsChevronDoubleRight size="17px"/></p>
 								  <div className={`me-0 ${styles.hr2}`}></div>
 								</div>
 							</div>
@@ -540,7 +540,7 @@ const SingleBlog = ({ blog, query }) => {
                        
                     </article>
                 </main>
-			
+			}
             </Layout>
             {/* <Footer/> */}
         </React.Fragment>

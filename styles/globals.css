@@ -47,6 +47,7 @@ a {
   box-sizing: border-box;
 }
 
+
 .pro-sidebar {
     width: 100% !important;
     min-width: 100% !important;
@@ -73,8 +74,8 @@ a {
 	height:auto;
 }
 .is-sticky ul {
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 .logobox {
     visibility: hidden;
@@ -110,7 +111,7 @@ a {
 .search_form{
   position: absolute;
     z-index: 9999;
-    top: 0px;
+    top: 2px;
     width: 100%;
 }
 .search_form div{
@@ -127,6 +128,7 @@ a {
   grid-gap: 30px;
   background: white;
   align-items: center;
+  height: 125px;
 }
 
 .middle-header-banner {
@@ -376,4 +378,42 @@ li.page-item.disabled {
 	.intro-banner-vdo-play-btn {
 		left: -15px;
 	}
+}
+
+
+
+.pro-sidebar .pro-menu .pro-menu-item>.pro-inner-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0px 35px 0px 20px;
+    cursor: pointer;
+}
+.pro-sidebar .pro-menu .pro-menu-item.pro-sub-menu .pro-inner-list-item .pro-inner-item {
+        padding: 0px 0px 10px 50px; }
+
+
+.error404 {
+    width: 100%;
+    background: white;
+    padding: 100px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.errorpagebtn {
+    border-radius: 50px;
+    font-size: 21px;
+    padding-bottom: 39px;
+    padding-top: 10px
+}
+
+.error_h1 {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-weight: bolder;
 }

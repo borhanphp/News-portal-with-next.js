@@ -51,7 +51,11 @@ const Socialmini = styled.div`
     display: flex;
 `;
 
-const Topnav = () => {
+const Topnav = ({iCross}) => {
+
+    const clearSearch = () => {
+        iCross();
+    }
 
     const [link, setLink] = useState([]);
 
@@ -93,7 +97,7 @@ const Topnav = () => {
                             <Link href="/site-pages/contact">যোগাযোগ</Link> */}
                             {page && page?.map((item, index) => 
                                 <Link href={`/site-pages/${item.slug}`} key={index}>
-                                <a>
+                                <a onClick={clearSearch}>
                                     {item.title}&nbsp;
                                 </a>
                                 </Link>

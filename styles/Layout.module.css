@@ -124,7 +124,7 @@
 }
 
 .text_style:hover {
-  color: #3b0101;
+  color: #DACD05;
 }
 
 
@@ -151,7 +151,7 @@
       align-items: center;
       width: 100%;
       grid-gap: 10px;
-      background: #ffffff;
+      background: #d90914;
       height: 34px;
     }
   }

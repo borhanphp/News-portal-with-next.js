@@ -28,7 +28,7 @@ const Poll = () => {
 
 
       const loadPoll = () => {
-        const url = `${API}/get-poll-bangla`;
+        const url = `${API}/get-poll`;
         axios.get(url)
         .then((res)=>{
 
@@ -187,7 +187,7 @@ const Poll = () => {
               let total = data.yes + data.no + data.nocomments;
 
               var yesvote = (data.yes/total)*100;
-              var novote = (data.no/total)*100;
+              var novote = (data.no/total)*100; 
               var nocommentsvote = (data.nocomments/total)*100;
 
               var yesvotew = (100- ((data.yes/total)*100))+"%";
@@ -207,7 +207,7 @@ const Poll = () => {
 				<>
                       <div className='col-12 pe-3' key={i}>
                       
-                      <img src={`${IMG_API}/${data?.photo}`} className='w-100' height="200px" />
+                      <img src={`${API}/poll/photo/${data?.photo}`} className='w-100' height="200px" />
                       <p>{data?.body}</p>
                       
                       
@@ -231,7 +231,7 @@ const Poll = () => {
                             />
                            
                             
-                            <label className={styles.lbl}>&nbsp;  হ্যাঁ</label><span className={styles.countlbl}>{Math.round(yesvote)}%</span><br/>
+                            <label className={styles.lbl}>&nbsp;  Yes</label><span className={styles.countlbl}>{Math.round(yesvote)}%</span><br/>
                         </div>
 
                         
@@ -258,7 +258,7 @@ const Poll = () => {
                             }).map((i) => {return i.id === data._id && i.value === 'no' ? `${styles.inputchange}` : ''})}
                           />
                        
-                          <label className={styles.lbl}>&nbsp;  না</label><span className={styles.countlbl}>{Math.round(novote)}%</span><br/>
+                          <label className={styles.lbl}>&nbsp;  No</label><span className={styles.countlbl}>{Math.round(novote)}%</span><br/>
                         </div>
                         
                   
@@ -285,7 +285,7 @@ const Poll = () => {
                           />
 
                        
-                          <label className={styles.lbl}> &nbsp; মন্তব্য নাই</label><span className={styles.countlbl}>{Math.round(nocommentsvote)}%</span>
+                          <label className={styles.lbl}> &nbsp; No Comments</label><span className={styles.countlbl}>{Math.round(nocommentsvote)}%</span>
                         </div>
 
                         

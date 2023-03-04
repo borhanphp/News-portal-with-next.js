@@ -120,6 +120,7 @@ const AllComments = () => {
           const res = await fetch(`${API}/comments`);
           const data = await res.json();
           setAllPosts(data);
+          console.log(data);
         };
     
         getPosts();
@@ -129,7 +130,7 @@ const AllComments = () => {
         const [searchData, setSearchData] = useState([]);
 
     const handleSearch = (e) => {
-        const search = e.toLowerCase();
+        const search = e;
         const res = allposts.filter(item => {
            const data = item.comment;
            return data.includes(search);
@@ -158,6 +159,22 @@ const AllComments = () => {
         e.preventDefault();
         handleSearch(search);
     }
+
+    const approveComment = (_id) => {
+          axios.post(`${API}/approvecomment`, { _id })
+            .then((res) => {
+                getPosts();
+            })
+            .catch((err) => console.log(err));
+      }
+
+      const unapproveComment = (_id) => {
+        axios.post(`${API}/unapprovecomment`, { _id })
+          .then((res) => {
+              getPosts();
+          })
+          .catch((err) => console.log(err));
+    }
    
 
 
@@ -171,7 +188,7 @@ const AllComments = () => {
                 {
                     items && items?.map((blog, i) =>
                     <tr key={i}>
-                        <td scope="row">{i + 1}</td>
+                         <td>{blog?.name}</td>
                         <td>
                             {blog?.comment}
                         </td>
@@ -179,7 +196,8 @@ const AllComments = () => {
                         <Link href={`/${blog?.postId?.slug}`}><a className='text-dark' target='_blank'>{blog?.postId?.title}</a></Link>
                         </td>
                         <td>{moment(blog.updatedAt).fromNow()}</td>
-                        <td>{blog?.name}</td>
+                       
+                        <td>{blog?.approved === "no" ? <span className="badge badge-danger btn text-white" onClick={(e) => approveComment(blog?._id)}>Click to Approve</span> : <span className="badge badge-success btn text-white" onClick={(e) => unapproveComment(blog?._id)}>Unapprove</span>}</td>
                         <td>    
                             <a onClick={() => deleteConfirm(blog?._id)} className="btn btn-danger btn-sm" style={{cursor: "pointer"}} data-original-title="Remove" data-container="body"><RiDeleteBin6Line/></a>&nbsp;&nbsp;
                             {/* <Link href={`/blogs/${blog.slug}`}><a target="_blank"  className="" style={{cursor: "pointer"}} >View</a></Link> */}
@@ -206,17 +224,19 @@ const AllComments = () => {
                 {
                     currentPageData && currentPageData?.map((blog, i) =>
                     <tr key={i}>
-                        <td scope="row">{i + 1}</td>
+                         <td>{blog?.name}</td>
                         <td>
                             {blog?.comment}
                         </td>
                         <td>
-                            <Link href={`/${blog?.postId?.slug}`}><a>{blog?.postId?.title}</a></Link>
+                        <Link href={`/${blog?.postId?.slug}`}><a className='text-dark' target='_blank'>{blog?.postId?.title}</a></Link>
                         </td>
-                        <td>{moment(blog?.updatedAt).fromNow()}</td>
-                        <td>{blog?.name}</td>
+                        <td>{moment(blog.updatedAt).fromNow()}</td>
+                       
+                        <td>{blog?.approved === "no" ? <span className="badge badge-danger btn text-white" onClick={(e) => approveComment(blog?._id)}>Click to Approve</span> : <span className="badge badge-success btn text-white" onClick={(e) => unapproveComment(blog?._id)}>Unapprove</span>}</td>
                         <td>    
-                            <a onClick={() => deleteConfirm(blog?._id)} className="" style={{cursor: "pointer"}} data-original-title="Remove" data-container="body"><RiDeleteBin6Line/></a>&nbsp;&nbsp;
+                            <a onClick={() => deleteConfirm(blog?._id)} className="btn btn-danger btn-sm" style={{cursor: "pointer"}} data-original-title="Remove" data-container="body"><RiDeleteBin6Line/></a>&nbsp;&nbsp;
+                            {/* <Link href={`/blogs/${blog.slug}`}><a target="_blank"  className="" style={{cursor: "pointer"}} >View</a></Link> */}
                         </td>
                         
                        
@@ -303,7 +323,7 @@ const AllComments = () => {
     
         const erverPosts = await fetchPosts(currentPage);
         setItems(erverPosts);
-
+        setSearch('');
         setServerPg(true);
         setSearchData('');
         setSearchPg(false);
@@ -318,7 +338,9 @@ const AllComments = () => {
             <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => {setMsg(false)}}></button>
         </div>
     );
-            
+
+
+     
     
                  
 
@@ -383,17 +405,21 @@ const AllComments = () => {
                                                     </form>
                                                
                                                 </div>
+                                                <div className="col-md-5 mt-3"></div>
+                                                <div className="col-md-2 mt-3">
+                                                <Link href="/admin/comment/allreply"><button className='btn text-white float-end' style={{backgroundColor: "gray"}}>All Reply</button></Link>
+                                               </div> 
                                                
                                                 
                                             </div>
                                             <table className="table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">SL</th>
+                                                        <th>Author</th>
                                                         <th>Comments</th>
                                                         <th>Post</th>
                                                         <th>Date</th>
-                                                        <th>Comment By</th>
+                                                        <th>Approval</th>
                                                         <th>Action</th>
 
                                                     </tr>

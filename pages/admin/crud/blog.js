@@ -1,12 +1,7 @@
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
-import BlogCreate from '../../../components/crud/BlogCreate';
-import Link from 'next/link';
-import Head from 'next/head';
-import Sidebar from '../../../components/Sidebar';
+import BlogCreate from '../../../components/admin/crud/BlogCreate';
 import StyleLinks from '../../../components/StyleLinks';
-import SigninStyle from '../../../components/SigninStyle';
-import Header from '../../../components/Header';
 import {API} from '../../../config';
 
 const Blog = ({images}) => {

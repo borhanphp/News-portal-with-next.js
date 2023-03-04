@@ -4,7 +4,7 @@ import RecentNews from "../AllTabs/RecentNews";
 import PopulerNews from "../AllTabs/PopulerNews";
 
 
-const Tabs = () => {
+const Tabs = ({clearS}) => {
     const [activeTab, setActiveTab] = useState("tab1");
 
     const handleTab1 = () => {
@@ -13,6 +13,10 @@ const Tabs = () => {
     const handleTab2 = () => {
         setActiveTab("tab2");
     };
+
+    const clearR = () => {
+        clearS();
+    }
   return (
     <>
  
@@ -34,7 +38,7 @@ const Tabs = () => {
                     </li>
                 </ul>
                
-                {activeTab === "tab1" ? <RecentNews /> : <PopulerNews />}
+                {activeTab === "tab1" ? <RecentNews clearR = {clearR}/> : <PopulerNews clearR = {clearR}/>}
               
                 </div>
             </div>
