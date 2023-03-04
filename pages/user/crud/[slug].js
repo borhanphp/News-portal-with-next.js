@@ -1,6 +1,6 @@
 import Layout from '../../../components/Layout';
 import Private from '../../../components/auth/Private';
-import BlogUpdate from '../../../components/crud/BlogUpdate';
+import BlogUpdate from '../../../components/admin/crud/BlogUpdate';
 import Link from 'next/link';
 
 const Blog = () => {

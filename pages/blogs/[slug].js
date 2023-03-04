@@ -38,7 +38,7 @@ import {
     TwitterIcon,
     WhatsappIcon,
   } from "react-share";
-import AddComment from '../components/comment/AddComment';
+import AddComment from '../../components/comment/AddComment';
 
 const SingleBlog = ({ blog, query }) => {
 
