@@ -5,6 +5,8 @@ import StyleLinks from '../../../components/StyleLinks';
 const Page = () => {
     return (
         <Layout>
+           
+                
             <UpdatePage/>
                        
            <StyleLinks/>
