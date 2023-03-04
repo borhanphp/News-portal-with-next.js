@@ -1,22 +1,22 @@
 import React, {useContext} from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react';
-import { singleBlog, listRelated } from '../actions/blog';
-import { API, DOMAIN, APP_NAME, FB_APP_ID, DOMAIN_IP, IMG_API } from '../config';
-import styles from '../styles/Slag.module.css';
+import { singleBlog, listRelated } from '../../actions/blog';
+import { API, DOMAIN, APP_NAME, FB_APP_ID, DOMAIN_IP, IMG_API } from '../../config';
+import styles from '../../styles/Slag.module.css';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
-import SmallCard from '../components/blog/SmallCard';
-import RelatedNews from '../components/blog/RelatedNews';
-import Postsidebar from '../components/Postsidebar';
+import SmallCard from '../../components/blog/SmallCard';
+import RelatedNews from '../../components/blog/RelatedNews';
+import Postsidebar from '../../components/Postsidebar';
 import axios from 'axios';
-import SingleSmallAds from '../components/frontend/BelowPostAds';
+import SingleSmallAds from '../../components/frontend/BelowPostAds';
 import { AiOutlineClockCircle, AiOutlinePrinter, AiOutlineHome } from 'react-icons/ai';
 import {BsChevronDoubleRight} from 'react-icons/bs';
-import { SearchContext } from '../service/SearchContext';
+import { SearchContext } from '../../service/SearchContext';
 import {
     FacebookShareButton,
     LinkedinShareButton,

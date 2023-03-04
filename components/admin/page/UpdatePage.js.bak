@@ -7,7 +7,6 @@ import styles from '../../../styles/Dashboard.module.css';
 import { getCookie, isAuth } from '../../../actions/auth';
 import { getCategories } from '../../../actions/category';
 import { API, DOMAIN, APP_NAME, FB_APP_ID, IMG_API } from '../../../config';
-import { getTags } from '../../../actions/tag';
 import { createBlog, singlePage, updatePage, } from '../../../actions/page';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import '../../../node_modules/react-quill/dist/quill.snow.css';

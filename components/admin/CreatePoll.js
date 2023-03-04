@@ -16,7 +16,7 @@ import { createPoll, updatePoll } from '../../actions/poll';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import '../../node_modules/react-quill/dist/quill.snow.css';
 import { QuillModules, QuillFormats } from '../../helpers/quill';
-import Sidebar from '../Sidebar';
+import Sidebar from './Sidebar';
 import Gallery from '../../components/admin/Gallery';
 import Loading from '../Loading';
 import axios from 'axios';

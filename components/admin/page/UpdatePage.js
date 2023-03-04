@@ -11,7 +11,7 @@ import { createBlog, singlePage, updatePage, } from '../../../actions/page';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import '../../../node_modules/react-quill/dist/quill.snow.css';
 import { QuillModules, QuillFormats } from '../../../helpers/quill';
-import Sidebar from '../../components/admin/Sidebar';
+import Sidebar from '../../../components/admin/Sidebar';
 import axios from 'axios';
 import Loading from '../../Loading';
 
