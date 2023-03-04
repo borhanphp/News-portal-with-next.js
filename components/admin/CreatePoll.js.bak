@@ -12,6 +12,7 @@ import { withRouter } from 'next/router';
 import { getCookie, isAuth } from '../../actions/auth';
 import { getCategories } from '../../actions/category';
 import { getSubCategories } from '../../actions/subcategory';
+import { getTags } from '../../actions/tag';
 import { createPoll, updatePoll } from '../../actions/poll';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import '../../node_modules/react-quill/dist/quill.snow.css';
