@@ -7,7 +7,6 @@ import { withRouter } from 'next/router';
 import { getCookie, isAuth } from '../../../actions/auth';
 import { getCategories } from '../../../actions/category';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
-import { getTags } from '../../../actions/tag';
 import { createBlog } from '../../../actions/blog';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import '../../../node_modules/react-quill/dist/quill.snow.css';

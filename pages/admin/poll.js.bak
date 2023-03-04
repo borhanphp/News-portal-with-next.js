@@ -1,7 +1,7 @@
 import Layout from '../../components/Layout';
 import Admin from '../../components/auth/Admin';
 import StyleLinks from '../../components/StyleLinks';
-import CreatePoll from '../../components/admin/CreatePoll';
+import CreatePoll from '../../components/poll/CreatePoll';
 
 
 const createPoll = () => {
