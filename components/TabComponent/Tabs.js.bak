@@ -28,13 +28,13 @@ const Tabs = ({clearS}) => {
                         className={activeTab === "tab1" ? `${styles.active}` : `${styles.inactive}`} 
                         onClick={handleTab1}
                     >
-                        Latest
+                        সর্বশেষ
                     </li>
                     <li
                         className={activeTab === "tab2" ? `${styles.active}` : `${styles.inactive}`}
                         onClick={handleTab2}
                     >
-                        Populer
+                        জনপ্রিয়
                     </li>
                 </ul>
                
