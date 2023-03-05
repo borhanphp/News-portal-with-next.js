@@ -11,7 +11,7 @@ const Index = ({ router }) => {
         <title>{APP_NAME}</title>
         <meta
             name="description"
-            content="Daily digital news and article"
+            content="Daily digital news and article, learn about technology, coding, and digital marketing markeitng"
         />
         <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
         <meta property="og:title" content={`Latest digital news and article for | ${APP_NAME}`} />
@@ -27,6 +27,7 @@ const Index = ({ router }) => {
         <meta property="og:image:secure_url" content={`${DOMAIN}/public/digitalnews.png`} />
         <meta property="og:image:type" content="image/jpg" />
         <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+        <meta name="google-site-verification" content="AB_y2GoPpkw0IyoPUeUAxgRBS2hemLsCJb9f-RlG_y0" />
     </Head>
   );
 
