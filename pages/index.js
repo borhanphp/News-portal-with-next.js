@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import Head from 'next/head';
+import Script from 'next/script'
 import { withRouter } from 'next/router';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import { SearchContext } from '../service/SearchContext';
@@ -28,6 +29,22 @@ const Index = ({ router }) => {
         <meta property="og:image:type" content="image/jpg" />
         <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         <meta name="google-site-verification" content="AB_y2GoPpkw0IyoPUeUAxgRBS2hemLsCJb9f-RlG_y0" />
+        
+       
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-JPP08LBVE6" strategy="afterInteractive"/>
+        <Script
+          id='google-analytics'
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-JPP08LBVE6');
+              `,
+            }}
+          />
+       
     </Head>
   );
 
