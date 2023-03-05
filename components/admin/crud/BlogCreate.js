@@ -371,7 +371,7 @@ const CreateBlog = ({ router, images }) => {
                          {showError()}
                      </div>   
                          
-                <form onSubmit={publishBlog}>
+               
    
                     <div className="page-wrapper">
                         <div className="container-fluid">
@@ -439,7 +439,7 @@ const CreateBlog = ({ router, images }) => {
                                             {/* <button className="btn btn-default">Preview</button>
                                             <button className="btn btn-default">Draft</button> */}
                                            
-                                                {saving === '' ?  <button className={`btn text-white`} style={{backgroundColor: "gray"}} type='submit'> Save &amp; Publish </button> : <button className={`btn text-white`} style={{backgroundColor: "gray"}} disabled>{saving}</button> }
+                                                {saving === '' ?  <button className={`btn text-white`} style={{backgroundColor: "gray"}} type='submit' onClick={publishBlog}> Save &amp; Publish </button> : <button className={`btn text-white`} style={{backgroundColor: "gray"}} disabled>{saving}</button> }
                                            
                                             
                                             </div>
@@ -464,7 +464,7 @@ const CreateBlog = ({ router, images }) => {
                                                         <i className="demo-pli-upload-to-cloud icon-5x" />
                                                         </div>
                                                         <div>
-                                                        {image && <img src={image} width="100%" height="150px"/>}
+                                                        {image && <img src={image} style={{width: '100%', height: '150px'}}/>}
                                                         </div>
                                                     </div>
                                                     <div className="fallback text-center">
@@ -533,7 +533,7 @@ const CreateBlog = ({ router, images }) => {
                                                     <div className={`col-sm-12 col-sm-offset-6 toolbar-right text-right ${styles.hideMobilePublish}`}>
                                                     {/* <button className="btn btn-default">Preview</button>
                                                     <button className="btn btn-default">Draft</button> */}
-                                                    <button className={`btn btn-primary text-white`} style={{backgroundColor: "gray"}} type='submit'>Save &amp; Publish</button>
+                                                    <button className={`btn btn-primary text-white`} style={{backgroundColor: "gray"}} type='submit' onClick={publishBlog}>Save &amp; Publish</button>
                                                     </div>
                                                 </div>
                                                 
@@ -551,7 +551,7 @@ const CreateBlog = ({ router, images }) => {
                             </div>
                         </div>
                     </div>
-                    </form>
+             
                  
                 </>
 

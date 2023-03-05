@@ -41,7 +41,6 @@ import {
 import AddComment from '../components/comment/AddComment';
 
 const SingleBlog = ({ blog, query }) => {
-
 	const hideview = useContext(SearchContext);
 
     const [fontChange, setFontChange] = useState(false);
