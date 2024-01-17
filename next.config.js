@@ -6,7 +6,7 @@ module.exports = {
   publicRuntimeConfig:{
     
     APP_NAME: 'Digital News',
-    API_PRODUCTION: 'http://82.180.161.124/api',
+    API_PRODUCTION: 'http://82.180.151.111/api',
     API_DEVELOPMENT: 'http://localhost:5000/api',
     PRODUCTION: false,
     FB_APP_ID: ""
